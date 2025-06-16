@@ -25,6 +25,7 @@ category: "Healthcare"
 featured: true
 pubDate: "2024-01-20"
 order: 6
+link: "https://appvintech.com/case-studies/clear-bio"
 ---
 
 ## Project Overview

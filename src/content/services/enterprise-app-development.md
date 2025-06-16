@@ -1,8 +1,9 @@
 ---
-title: "Enterprise App Development Services | Appvintech"
+title: "Enterprise App Development Services"
 description: "Develop resilient, scalable enterprise applications with our customized enterprise app development services. Boost productivity and optimize operations."
 icon: "/images/services/enterprise-app.webp"
 order: 4
+link: "https://appvintech.com/services/enterprise-app-development"
 ---
 
 ## Enterprise App Development

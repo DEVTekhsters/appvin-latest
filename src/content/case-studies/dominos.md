@@ -26,6 +26,7 @@ category: "Food & Beverage"
 featured: true
 pubDate: "2023-05-10"
 order: 2
+link: "https://appvintech.com/case-studies/dominos"
 ---
 
 ## Project Overview

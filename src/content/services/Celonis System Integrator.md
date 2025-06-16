@@ -1,5 +1,5 @@
 ---
-title: "Celonis System Integration Services | Appvintech"
+title: "Celonis System Integration Services"
 description: "Simplify operational efficiency with AppvinTech’s expert Celonis system integration services. Find inefficiencies, automate procedures, and promote development."
 icon: "refresh"
 features:
@@ -8,6 +8,7 @@ features:
   - "Implement intelligent automation and orchestration"
   - "Drive continuous improvement with real-time process monitoring"
 order: 2
+link: "https://appvintech.com/services/celonis-system-integrator"
 ---
 
 # Celonis System Integrator
