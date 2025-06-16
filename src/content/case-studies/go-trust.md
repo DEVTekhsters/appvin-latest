@@ -25,6 +25,7 @@ category: "Compliance/ESG"
 featured: true
 pubDate: "2024-03-10"
 order: 8
+link: "https://appvintech.com/case-studies/go-trust"
 ---
 
 ## Project Overview

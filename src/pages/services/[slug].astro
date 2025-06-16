@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
-const { title, description, icon, features, image } = entry.data;
+const { title, description, icon, features, image, link } = entry.data;
 
 // Get all services for the sidebar
 const allServices = await getCollection('services');
@@ -85,6 +85,7 @@ const sortedServices = allServices.sort((a, b) => {
           <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             {title}
           </h1>
+          <link rel="canonical" href={link} />
           <p class="text-xl text-gray-600 dark:text-gray-400">
             {description}
           </p>
