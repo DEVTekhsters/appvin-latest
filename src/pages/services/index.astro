@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import { jsonLdSchemas } from '../../data/jsonLdSchemas';
 
 // Get all services from the content collection
 const servicesCollection = await getCollection('services');
@@ -30,6 +31,12 @@ const services = servicesCollection.sort((a, b) => {
   title="Our AI-native & Development Services | AppVin Technologies"
   description="Explore our AI-native digital services, business process automation, SAP integration, cross-platform apps, and custom AI solutions to drive transformation."
 >
+
+<Fragment slot="head">
+  {jsonLdSchemas.services && (
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLdSchemas.services)}></script>
+  )}
+</Fragment>
   <Header />
 
   <main>
