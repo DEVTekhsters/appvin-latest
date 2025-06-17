@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import { jsonLdSchemas } from '../../data/jsonLdSchemas';
 
 export async function getStaticPaths() {
   const servicesEntries = await getCollection('services');
@@ -42,6 +43,16 @@ const sortedServices = allServices.sort((a, b) => {
   title={`${title}`}
   description={description}
 >
+
+<Fragment slot="head">
+  {jsonLdSchemas[entry.slug] && (
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLdSchemas[entry.slug])}></script>
+  )}
+</Fragment>
+
+
+
+
   <Header />
 
   <main>
