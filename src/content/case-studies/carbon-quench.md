@@ -24,6 +24,7 @@ category: "Compliance/ESG"
 featured: true
 pubDate: "2024-02-25"
 order: 7
+link: "https://appvintech.com/case-studies/carbon-quench"
 ---
 
 ## Project Overview

@@ -25,6 +25,7 @@ const servicesCollection = defineCollection({
     order: z.number().optional(),
     features: z.array(z.string()).optional(),
     image: z.string().optional(),
+    link: z.string().optional()
   }),
 });
 
@@ -62,6 +63,7 @@ const caseStudiesCollection = defineCollection({
     gallery: z.array(z.string()).optional(),
     featured: z.boolean().optional(),
     pubDate: z.string().optional(),
+    link: z.string().optional(),
   }),
 });
 

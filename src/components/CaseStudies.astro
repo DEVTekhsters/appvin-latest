@@ -26,7 +26,7 @@ const featuredCaseStudies = [
       industry: "Food & Beverage",
       services: ["Mobile App Development", "UX/UI Design", "Backend Development"],
       alt: "UI element for product demo or stats",
-      image: "/images/staging_img/dominos_img.png1", 
+      image: "/images/staging_img/dominos_img.png", 
       logo: "/images/staging_img/dominos_logo.webp",
       logoAlt: "Domino’s logo",
       featured: true,
@@ -59,7 +59,8 @@ const featuredCaseStudies = [
       client: "Moove Technologies",
       industry: "Transportation & Logistics",
       services: ["Web Application", "Mobile App", "AI Integration", "IoT"],
-      image: "/images/staging_img/moove_driver_img.png", // Moove image from staging site
+      // image: "/images/staging_img/moove_driver_img.png", // Moove image from staging site
+      image: "/images/staging_img/kfc_img.png",
       alt: "Moove product demo",
       logo: "/images/staging_img/moove.svg", // Moove logo from staging site
       logoAlt: "Moove logo",
@@ -161,12 +162,13 @@ const featuredCaseStudies = [
               src={
                 study.slug === 'dominos' ? "/images/staging_img/dominos_img.png" :
                 study.slug === 'kfc' ? "/images/staging_img/kfc_img.png" :
-                study.slug === 'moove' ? "/images/staging_img/moove_img.png" :
+                study.slug === 'moove' ? "/images/staging_img/moove_driver_img.png" :
                 study.slug === 'clear-bio' ? "/images/staging_img/clear_bio_img.png" :
                 study.data.industry === "Food & Beverage" ? "/images/case-studies/new/ab-inbev.webp" :
                 study.data.industry === "Healthcare" ? "/images/case-studies/new/healthcare-digital-transformation.webp" :
                 study.data.industry === "Technology" ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552038.png" :
-                study.data.industry === "Transportation & Logistics" ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552033-2.png" :
+                // study.data.industry === "Transportation & Logistics" ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552033-2.png" :
+                study.data.industry === "Transportation & Logistics" ? "/images/staging_img/moove_driver_img.png" :
                 study.data.industry === "Finance" ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552036.png" :
                 study.data.industry === "Retail" ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552041-1.png" :
                 study.data.image || "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552045.png"

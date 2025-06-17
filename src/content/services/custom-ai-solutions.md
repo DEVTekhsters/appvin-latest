@@ -1,6 +1,6 @@
 ---
-title: "Custom AI Development Services for Businesses | Appvintech"
-description: "Our custom AI solutions are tailored to your goals and built to scale across web and mobile platforms. Boost innovation, facilitate adaptive learning."
+title: "Custom AI Development Services"
+description: "Our custom AI development services are tailored to your goals and built to scale across web and mobile platforms. Boost innovation, facilitate adaptive learning."
 icon: "brain"
 features:
   - "Develop custom models with CLAMP A, Minicraft & Optimize"
@@ -8,6 +8,7 @@ features:
   - "Continuously refine with adaptive learning"
   - "Accelerate innovation and customer personalization"
 order: 4
+link: "https://appvintech.com/services/custom-ai-solutions"
 ---
 
 # Custom AI Solutions

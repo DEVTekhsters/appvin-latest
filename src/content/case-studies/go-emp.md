@@ -1,14 +1,14 @@
 ---
 title: "GO-EMP: Your Ultimate Employee Management Software"
 subtitle: "Comprehensive B2B Employee Data Management Solution"
-description: "GO-Employee is a B2B app enabling businesses to manage employee data. Employees use the app for leave requests, attendance, task tracking, and expense declarations, along with support and feedback features."
+description: "GO-Employee is a B2B app enabling businesses to get the most out of their staff with GO-EMP. Simplify time tracking, leave management, and more"
 client: "GO-EMP Solutions"
 industry: "Finance"
 services: ["Mobile App Development", "Web Development", "Backend Development"]
 challenge: "GO-EMP Solutions needed a comprehensive B2B application that would streamline employee data management, simplify HR processes, and enhance communication between employees and management."
 solution: "We developed GO-EMP, a feature-rich mobile and web application that centralizes employee data management and provides tools for leave requests, attendance tracking, task management, and expense declarations."
 image: "/images/staging_img/go_emp_img.png"
-logo: "/images/case-studies/go_emp_img.png"
+logo: "/images/staging_img/go-emp.svg"
 stats:
   - value: "40%"
     label: "Reduction in HR Administrative Time"
@@ -25,6 +25,7 @@ category: "Finance"
 featured: true
 pubDate: "2024-03-15"
 order: 9
+link: "https://appvintech.com/case-studies/go-emp"
 ---
 
 ## Project Overview

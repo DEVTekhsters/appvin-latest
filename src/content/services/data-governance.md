@@ -1,5 +1,5 @@
 ---
-title: "Data Governance Solutions | Ensure Data Security & Compliance"
+title: "Data Governance Solutions for Compliance"
 description: "Turn data into a competitive edge with our data governance solutions. Discover insights, unify data, secure retention, and ensure accuracy with quality management."
 icon: "chart"
 features:
@@ -8,6 +8,7 @@ features:
   - "Protect critical data with secure retention policies"
   - "Maintain high accuracy through quality management"
 order: 3
+link: "https://appvintech.com/services/data-governance"
 ---
 
 # Data Governance
