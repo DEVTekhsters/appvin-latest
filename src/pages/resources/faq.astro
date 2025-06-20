@@ -5,7 +5,10 @@ import Footer from '../../components/Footer.astro';
 ---
 
 <Layout title="FAQ | AppVin Technologies" description="Frequently Asked Questions about AppVin Technologies, our services, and more.">
+  <Fragment slot="head">
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://appvintech.com/resources/faq/" />
+</Fragment>
   <Header />
   <main>
     <section class="pt-32 pb-12 md:pt-40 md:pb-20 bg-gray-50 dark:bg-gray-800">

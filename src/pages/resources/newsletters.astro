@@ -9,7 +9,10 @@ import Footer from '../../components/Footer.astro';
   title="Whitepapers | AppVin Technologies"
   description="Explore our collection of whitepapers on AI, product engineering, and digital transformation."
 >
-<link rel="canonical" href="https://appvintech.com/resources/whitepapers/" />
+<Fragment slot="head">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://appvintech.com/resources/newsletters/" />
+</Fragment>
   <Header />
 
   <main>
@@ -18,7 +21,7 @@ import Footer from '../../components/Footer.astro';
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto text-center">
           <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Whitepapers
+            Newsletters
           </h1>
           <p class="text-xl text-gray-600 dark:text-gray-400">
             In-depth research and insights on the latest trends in technology and digital transformation.
@@ -31,56 +34,24 @@ import Footer from '../../components/Footer.astro';
     <section class="py-16 md:py-24 bg-white dark:bg-gray-900">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">
-          <!-- Filters -->
-          <div class="mb-12">
-            <div class="flex flex-wrap gap-3 justify-center">
-              <button class="px-4 py-2 rounded-full bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 font-medium text-sm hover:bg-primary-100 dark:hover:bg-primary-800/30 transition-colors">
-                All Topics
-              </button>
-              <button class="px-4 py-2 rounded-full bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                AI & Machine Learning
-              </button>
-              <button class="px-4 py-2 rounded-full bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                Digital Transformation
-              </button>
-              <button class="px-4 py-2 rounded-full bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                Cloud Computing
-              </button>
-              <button class="px-4 py-2 rounded-full bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                Data Analytics
-              </button>
-            </div>
-          </div>
 
           <!-- Whitepapers Grid -->
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Whitepaper 1 -->
             <div class="card hover:shadow-lg transition-all duration-300 overflow-hidden group">
               <div class="relative overflow-hidden h-48">
-                <img src="/images/from_code_to_cloud.webp" alt="AI Strategy Whitepaper" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                  <div class="p-4 w-full">
-                    <span class="inline-block px-3 py-1 bg-primary-600/90 text-white text-xs font-medium rounded-full mb-2">
-                      Code To Cloud
-                    </span>
-                  </div>
-                </div>
+                <img src="/images/harnessing_data_governance_and_compliance_in_modern_enterprise_apps.png" alt="AI Strategy Whitepaper" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               </div>
               <div class="p-6">
+                <span class="text-sm text-gray-500 dark:text-gray-500">June 17, 2025</span>
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                  From Code to Cloud - AppVin Secures Every Step with DevSecOps
+                  Harnessing Data Governance and Compliance in Modern Enterprise Apps
                 </h3>
                 <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
-                  In an era where digital transformation is a top priority, organizations must rethink how they build and secure software. Traditional models of application security, where security is introduced late in the development lifecycle, are no longer viable. DevSecOps-a methodology that integrates security into every phase of the DevOps pipeline-has emerged as the answer to this challenge..
+                  In today’s digital world, data is crucial for every organization. With increasing regulations like GDPR, CCPA, and PDPL, ensuring data governance and compliance...
                 </p>
                 <div class="flex justify-between items-center">
-                  <span class="text-sm text-gray-500 dark:text-gray-500">8 pages • PDF</span>
-                  <a href="https://drive.google.com/file/d/1_PiamUe_heYEHFPv_RK14HYyqp7Dx7tp/view?usp=sharing" class="text-primary-600 dark:text-primary-400 font-medium text-sm flex items-center hover:underline">
-                    Download
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </svg>
-                  </a>
+                  Read More
                 </div>
               </div>
             </div>

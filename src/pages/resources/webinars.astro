@@ -8,7 +8,10 @@ import Footer from '../../components/Footer.astro';
   title="Webinars | AppVin Technologies"
   description="Join our expert-led webinars on AI, product engineering, and digital transformation."
 >
-<link rel="canonical" href="https://appvintech.com/resources/webinars/" />
+<Fragment slot="head">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://appvintech.com/resources/webinars/" />
+</Fragment>
   <Header />
 
   <main>

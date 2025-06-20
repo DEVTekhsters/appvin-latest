@@ -11,13 +11,31 @@ import BlogPreview from '../components/BlogPreview.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 ---
-
+  
 <Layout
   title="Top-Rated Software Development & Custom AI Services | AppVin"
   description="A leading AI-powered software development company with 120+ completed projects. Transform your business with scalable custom software and AI-native solutions."
 >
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://appvintech.com/" />
+  <Fragment slot="head">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://appvintech.com/" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Corporation",
+        "name": "AppVin Technologies",
+        "url": "https://appvintech.com/",
+        "logo": "https://appvintech.com/images/appvin-logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+31 611306856",
+          "contactType": "sales",
+          "areaServed": ["NL", "US", "GB", "AE", "IN"]
+        },
+        "sameAs": "https://linkedin.com/company/appvin"
+      }
+    </script>
+  </Fragment>
   <Header />
 
   <main>
@@ -50,24 +68,6 @@ import Footer from '../components/Footer.astro';
 
       window.onload = loadBanner;
     </script>
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Corporation",
-  "name": "AppVin Technologies",
-  "url": "https://appvintech.com/",
-  "logo": "https://appvintech.com/images/appvin-logo.png",
-  "contactPoint": {
-	"@type": "ContactPoint",
-	"telephone": "+31 611306856",
-	"contactType": "sales",
-	"areaServed": ["NL","US","GB","AE","IN"]
-  },
-  "sameAs": "https://linkedin.com/company/appvin"
-}
-</script>
-
-
 
     <Hero />
     <Services />
