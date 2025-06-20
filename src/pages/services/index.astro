@@ -31,13 +31,15 @@ const services = servicesCollection.sort((a, b) => {
   title="Explore Our AI-native & Software Development Services | Appvin"
   description="Discover our AI-native development, SAP integration, enterprise app solutions, and data governance services. Get your custom and smarter apps built today"
 >
-
+<Fragment slot="head">
+  <meta name="robots" content="index, follow">
+</Fragment>
 <Fragment slot="head">
   {jsonLdSchemas.services && (
     <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLdSchemas.services)}></script>
+    <link rel="canonical" href="https://appvintech.com/services/" />
   )}
 </Fragment>
-<link rel="canonical" href="https://appvintech.com/services" />
   <Header />
 
   <main>

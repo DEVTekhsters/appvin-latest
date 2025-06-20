@@ -4,7 +4,7 @@ export const jsonLdSchemas: Record<string, any> = {
     "@type": "Service",
     "name": "SAP Integration Services",
     "description": "Seamlessly connect SAP systems with modern applications using AppVinTech’s robust integration architecture.",
-    "url": "https://appvintech.com/services/sap-integration",
+    "url": "https://appvintech.com/services/sap-integration/",
     "provider": {
       "@type": "Organization",
       "name": "AppVinTech",
@@ -25,7 +25,7 @@ export const jsonLdSchemas: Record<string, any> = {
     "@type": "Service",
     "name": "Celonis System Integrator",
     "description": "Drive intelligent process mining and automation with AppVinTech’s Celonis integration services.",
-    "url": "https://appvintech.com/services/celonis-system-integrator",
+    "url": "https://appvintech.com/services/celonis-system-integrator/",
     "provider": {
       "@type": "Organization",
       "name": "AppVinTech",
