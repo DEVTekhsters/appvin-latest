@@ -8,7 +8,7 @@ features:
   - "Continuously refine with adaptive learning"
   - "Accelerate innovation and customer personalization"
 order: 4
-link: "https://appvintech.com/services/custom-ai-solutions"
+link: "https://appvintech.com/services/custom-ai-solutions/"
 ---
 
 # Custom AI Solutions

@@ -24,7 +24,7 @@ category: "Food & Beverage"
 featured: true
 pubDate: "2023-03-20"
 order: 3
-link: "https://appvintech.com/case-studies/kfc"
+link: "https://appvintech.com/case-studies/kfc/"
 ---
 
 ## Project Overview

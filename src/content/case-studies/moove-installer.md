@@ -27,7 +27,7 @@ category: "Transportation & Logistics"
 featured: true
 pubDate: "2024-02-10"
 order: 2
-link: "https://appvintech.com/case-studies/moove-installer"
+link: "https://appvintech.com/case-studies/moove-installer/"
 ---
 
 ## Project Overview

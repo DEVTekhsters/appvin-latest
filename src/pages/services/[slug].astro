@@ -42,6 +42,7 @@ const sortedServices = allServices.sort((a, b) => {
 <Layout
   title={`${title}`}
   description={description}
+  canonical={link}
 >
 
 <Fragment slot="head">
@@ -97,7 +98,6 @@ const sortedServices = allServices.sort((a, b) => {
             <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             {title}
           </h1>
-            <link rel="canonical" href={link} />
           <p class="text-xl text-gray-600 dark:text-gray-400">
             {description}
           </p>

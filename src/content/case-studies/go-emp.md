@@ -25,7 +25,7 @@ category: "Finance"
 featured: true
 pubDate: "2024-03-15"
 order: 9
-link: "https://appvintech.com/case-studies/go-emp"
+link: "https://appvintech.com/case-studies/go-emp/"
 ---
 
 ## Project Overview

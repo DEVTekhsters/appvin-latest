@@ -27,7 +27,7 @@ category: "Transportation & Logistics"
 featured: true
 pubDate: "2024-02-15"
 order: 3
-link: "https://appvintech.com/case-studies/moove-driver"
+link: "https://appvintech.com/case-studies/moove-driver/"
 ---
 
 ## Project Overview
