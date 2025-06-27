@@ -5,9 +5,8 @@ const navItems = [
   { name: "Home", url: "/" },
   { name: "About", url: "/about" },
   { name: "Services", url: "/services" },
-  { name: "Case Studies", url: "/case-studies" },
+  { name: "Resources", url: "/resources" },
   { name: "Careers", url: "/careers" },
-  { name: "Blog", url: "/blog" },
   { name: "Contact", url: "/contact" },
 ];
 
@@ -21,6 +20,17 @@ const sortedServices = servicesCollection.sort((a, b) => {
   if (b.data.order !== undefined) return 1;
   return a.data.title.localeCompare(b.data.title);
 });
+
+// Resources for the dropdown
+const resourcesItems = [
+  { name: "Blog", url: "/blog" },
+  { name: "Case Studies", url: "/case-studies" },
+  { name: "Whitepapers", url: "/resources/whitepapers" },
+  { name: "Newsletters", url: "/resources/newsletters" },
+  // { name: "Webinars", url: "/resources/webinars" },
+  // { name: "Documentation", url: "/docs" },
+  // { name: "FAQ", url: "/resources/faq" },
+];
 
 const currentPath = Astro.url.pathname;
 ---
@@ -100,6 +110,48 @@ const currentPath = Astro.url.pathname;
             );
           }
 
+          // Special handling for Resources dropdown
+          if (item.name === "Resources") {
+            const resourcesActive = currentPath.startsWith('/resources') || currentPath.startsWith('/blog') || currentPath.startsWith('/docs') || currentPath === '/case-studies';
+            return (
+              <div class="relative group">
+                <a
+                  href={item.url}
+                  class={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 mx-1 flex items-center
+                    ${resourcesActive
+                      ? 'text-primary-600 dark:text-primary-400 bg-primary-50/80 dark:bg-primary-900/20 font-semibold'
+                      : 'text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 hover:bg-gray-50/80 dark:hover:bg-gray-800/50'
+                    }`}
+                >
+                  <span class="relative z-10">{item.name}</span>
+                  <svg class="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                  {resourcesActive && (
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-primary-soft rounded-full transform animate-pulse" />
+                  )}
+                </a>
+
+                <!-- Resources Dropdown -->
+                <div class="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
+                  <div class="p-3">
+                    <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 px-2">Resources</div>
+                    <div class="space-y-1">
+                      {resourcesItems.map((resource) => (
+                        <a
+                          href={resource.url}
+                          class="block px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-all duration-200"
+                        >
+                          {resource.name}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          }
+
           // Regular nav items
           return (
             <a
@@ -150,9 +202,78 @@ const currentPath = Astro.url.pathname;
   <!-- Mobile/Tablet Menu -->
   <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 z-40 bg-black/40 backdrop-blur-sm">
     <div class="container mx-auto px-4 py-4 flex justify-center items-start min-h-screen">
-      <div class="glass-effect rounded-2xl shadow-card p-6 space-y-3 w-full max-w-md mt-20">
+      <div class="glass-effect rounded-2xl shadow-card p-6 space-y-3 w-full max-w-md mt-20 max-h-[80vh] overflow-y-auto">
         {navItems.map((item) => {
           const isActive = currentPath === item.url || (item.url !== '/' && currentPath.startsWith(item.url));
+
+          // Special handling for Services in mobile
+          if (item.name === "Services") {
+            return (
+              <div class="mobile-dropdown">
+                <button
+                  class={`mobile-dropdown-toggle w-full flex items-center justify-between px-4 py-3 text-base font-medium rounded-xl transition-all duration-300
+                    ${isActive
+                      ? 'text-primary-600 dark:text-primary-400 bg-primary-50/80 dark:bg-primary-900/20 font-semibold'
+                      : 'text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 hover:bg-gray-50/80 dark:hover:bg-gray-800/50'
+                    }`}
+                >
+                  <span>{item.name}</span>
+                  <svg class="mobile-dropdown-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="mobile-dropdown-content hidden mt-2 ml-4 space-y-2">
+                  {sortedServices.map((service) => (
+                    <a
+                      href={`/services/${service.slug}`}
+                      class="block px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-all duration-200"
+                    >
+                      {service.data.title}
+                    </a>
+                  ))}
+                  <a
+                    href="/services"
+                    class="block px-3 py-2 text-sm font-medium text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20 rounded-lg hover:bg-primary-100 dark:hover:bg-primary-800/30 transition-colors"
+                  >
+                    View All Services
+                  </a>
+                </div>
+              </div>
+            );
+          }
+
+          // Special handling for Resources in mobile
+          if (item.name === "Resources") {
+            const resourcesActive = currentPath.startsWith('/resources') || currentPath.startsWith('/blog') || currentPath.startsWith('/docs') || currentPath === '/case-studies';
+            return (
+              <div class="mobile-dropdown">
+                <button
+                  class={`mobile-dropdown-toggle w-full flex items-center justify-between px-4 py-3 text-base font-medium rounded-xl transition-all duration-300
+                    ${resourcesActive
+                      ? 'text-primary-600 dark:text-primary-400 bg-primary-50/80 dark:bg-primary-900/20 font-semibold'
+                      : 'text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 hover:bg-gray-50/80 dark:hover:bg-gray-800/50'
+                    }`}
+                >
+                  <span>{item.name}</span>
+                  <svg class="mobile-dropdown-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="mobile-dropdown-content hidden mt-2 ml-4 space-y-2">
+                  {resourcesItems.map((resource) => (
+                    <a
+                      href={resource.url}
+                      class="block px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-all duration-200"
+                    >
+                      {resource.name}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            );
+          }
+
+          // Regular nav items
           return (
             <a
               href={item.url}
@@ -206,6 +327,32 @@ const currentPath = Astro.url.pathname;
         }
       });
     }
+
+    // Mobile dropdown functionality
+    const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+    mobileDropdownToggles.forEach(toggle => {
+      toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        const dropdown = toggle.closest('.mobile-dropdown');
+        const content = dropdown?.querySelector('.mobile-dropdown-content');
+        const arrow = toggle.querySelector('.mobile-dropdown-arrow');
+
+        // Toggle current dropdown
+        if (content) content.classList.toggle('hidden');
+        if (arrow) arrow.classList.toggle('rotate-180');
+
+        // Close other dropdowns
+        mobileDropdownToggles.forEach(otherToggle => {
+          if (otherToggle !== toggle) {
+            const otherDropdown = otherToggle.closest('.mobile-dropdown');
+            const otherContent = otherDropdown?.querySelector('.mobile-dropdown-content');
+            const otherArrow = otherToggle.querySelector('.mobile-dropdown-arrow');
+            if (otherContent) otherContent.classList.add('hidden');
+            if (otherArrow) otherArrow.classList.remove('rotate-180');
+          }
+        });
+      });
+    });
 
     // Sticky header with shadow on scroll
     if (header) {

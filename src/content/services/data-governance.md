@@ -8,7 +8,7 @@ features:
   - "Protect critical data with secure retention policies"
   - "Maintain high accuracy through quality management"
 order: 3
-link: "https://appvintech.com/services/data-governance"
+link: "https://appvintech.com/services/data-governance/"
 ---
 
 # Data Governance

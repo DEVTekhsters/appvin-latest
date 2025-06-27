@@ -79,6 +79,23 @@ const testimonialsCollection = defineCollection({
   }),
 });
 
+// Newsletters collection schema
+const newslettersCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    category: z.string(),
+    pubDate: z.coerce.date(),
+    image: z.string().optional(), // Main newsletter card image
+    featuredImage: z.string().optional(), // Large image for individual newsletter page
+    featured: z.boolean().optional().default(false),
+    order: z.number().optional(),
+    readTime: z.string().optional(),
+    tags: z.array(z.string()).optional().default([]),
+  }),
+});
+
 // Company information collection schema
 const companyCollection = defineCollection({
   type: "content",
@@ -96,4 +113,5 @@ export const collections = {
   "case-studies": caseStudiesCollection,
   testimonials: testimonialsCollection,
   company: companyCollection,
+  newsletters: newslettersCollection,
 };

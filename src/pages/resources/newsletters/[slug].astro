@@ -1,0 +1,324 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const newslettersEntries = await getCollection('newsletters');
+
+  return newslettersEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const {
+  title,
+  description,
+  category,
+  pubDate,
+  image,
+  featuredImage,
+  readTime,
+  tags
+} = entry.data;
+
+// Image path logic with manual override support
+const getImagePath = (imagePath: string | undefined, fallbackPath: string) => {
+  if (!imagePath) return fallbackPath;
+
+  // If it's a full URL (starts with http/https), use as-is
+  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+    return imagePath;
+  }
+
+  // If it starts with /, treat as absolute path from public folder
+  if (imagePath.startsWith('/')) {
+    return imagePath;
+  }
+
+  // Otherwise, treat as relative path and prepend /images/newsletters/
+  return `/images/newsletters/${imagePath}`;
+};
+
+// Get card image and featured image with fallbacks
+const cardImage = getImagePath(image, '/images/newsletters/default.webp');
+const pageImage = getImagePath(featuredImage || image, cardImage);
+
+// Get all newsletters for "Next Newsletter" section
+const allNewsletters = await getCollection('newsletters');
+const otherNewsletters = allNewsletters
+  .filter(newsletter => newsletter.slug !== entry.slug)
+  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+  .slice(0, 3);
+
+// Format date function
+function formatDate(date: Date): string {
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(date);
+}
+---
+
+<Layout
+  title={`${title} | AppVin Technologies Newsletter`}
+  description={description}
+  canonical={`https://appvintech.com/resources/newsletters/${entry.slug}/`}
+  ogTitle={title}
+  ogDescription={description}
+  ogImage={pageImage}
+>
+  <Header />
+
+  <main>
+    <!-- Newsletter Header -->
+    <section class="pt-32 pb-12 md:pt-40 md:pb-20 bg-gradient-to-b from-white to-blue-50 dark:from-gray-900 dark:to-gray-800">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <!-- Breadcrumb -->
+          <nav class="mb-8">
+            <ol class="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+              <li><a href="/" class="hover:text-primary-600 dark:hover:text-primary-400">Home</a></li>
+              <li><span class="mx-2">/</span></li>
+              <li><a href="/resources/newsletters" class="hover:text-primary-600 dark:hover:text-primary-400">Newsletters</a></li>
+              <li><span class="mx-2">/</span></li>
+              <li class="text-gray-900 dark:text-white">{title}</li>
+            </ol>
+          </nav>
+
+          <!-- Newsletter Meta -->
+          <div class="text-center mb-8">
+            <span class="inline-block px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium rounded-full mb-4">
+              {category}
+            </span>
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+              {title}
+            </h1>
+            <div class="flex items-center justify-center space-x-4 text-gray-600 dark:text-gray-400">
+              <div class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <span>{formatDate(pubDate)}</span>
+              </div>
+              {readTime && (
+                <div class="flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>{readTime}</span>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <!-- Featured Image -->
+          {(featuredImage || image) && (
+            <div class="mb-12 rounded-lg overflow-hidden">
+              <img
+                src={pageImage}
+                alt={title}
+                class="newsletter-featured-image w-full h-auto object-cover"
+              />
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Content -->
+    <section class="py-16 md:py-24 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <div class="prose prose-lg dark:prose-invert max-w-none">
+            <Content />
+          </div>
+
+          <!-- Tags -->
+          {tags && tags.length > 0 && (
+            <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Tags</h3>
+              <div class="flex flex-wrap gap-2">
+                {tags.map((tag) => (
+                  <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- Share Section -->
+          <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Share this newsletter</h3>
+            <div class="flex space-x-4">
+              <a
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(`https://appvintech.com/resources/newsletters/${entry.slug}/`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors"
+              >
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                </svg>
+                Twitter
+              </a>
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://appvintech.com/resources/newsletters/${entry.slug}/`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center px-4 py-2 bg-blue-700 hover:bg-blue-800 text-white rounded-lg transition-colors"
+              >
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next Newsletters Section -->
+    {otherNewsletters.length > 0 && (
+      <section class="py-16 md:py-24 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                More Newsletters
+              </h2>
+              <p class="text-xl text-gray-600 dark:text-gray-400">
+                Explore our other newsletters for more insights and updates
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {otherNewsletters.map((newsletter) => (
+                <article class="card hover:shadow-lg transition-all duration-300 overflow-hidden group">
+                  <a href={`/resources/newsletters/${newsletter.slug}`} class="block">
+                    <div class="relative overflow-hidden h-48">
+                      <img
+                        src={getImagePath(newsletter.data.image, '/images/newsletters/default.webp')}
+                        alt={newsletter.data.title}
+                        class="newsletter-image w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <div class="p-6">
+                      <span class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2 block">
+                        {newsletter.data.category}
+                      </span>
+                      <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                        {newsletter.data.title}
+                      </h3>
+                      <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                        {newsletter.data.description}
+                      </p>
+                      <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500 dark:text-gray-500">
+                          {formatDate(newsletter.data.pubDate)}
+                        </span>
+                        <span class="text-primary-600 dark:text-primary-400 font-medium text-sm flex items-center group-hover:translate-x-1 transition-transform">
+                          Read More
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </a>
+                </article>
+              ))}
+            </div>
+
+            <div class="text-center mt-12">
+              <a
+                href="/resources/newsletters"
+                class="inline-flex items-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors duration-300"
+              >
+                View All Newsletters
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Remove box shadow from newsletter images */
+  .newsletter-image,
+  .newsletter-featured-image {
+    box-shadow: none !important;
+    filter: none !important;
+  }
+  
+  .newsletter-image:hover,
+  .newsletter-featured-image:hover {
+    box-shadow: none !important;
+    filter: none !important;
+  }
+  
+  /* Ensure no shadows in dark mode */
+  .dark .newsletter-image,
+  .dark .newsletter-featured-image {
+    box-shadow: none !important;
+    filter: none !important;
+  }
+  
+  .dark .newsletter-image:hover,
+  .dark .newsletter-featured-image:hover {
+    box-shadow: none !important;
+    filter: none !important;
+  }
+
+  /* Line clamp utility */
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Prose styling for newsletter content */
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    @apply text-gray-900 dark:text-white;
+  }
+
+  .prose p {
+    @apply text-gray-700 dark:text-gray-300;
+  }
+
+  .prose a {
+    @apply text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300;
+  }
+
+  .prose ul, .prose ol {
+    @apply text-gray-700 dark:text-gray-300;
+  }
+
+  .prose blockquote {
+    @apply border-primary-200 dark:border-primary-800 bg-primary-50 dark:bg-primary-900/20;
+  }
+
+  .prose code {
+    @apply bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100;
+  }
+
+  .prose pre {
+    @apply bg-gray-900 dark:bg-gray-800;
+  }
+</style>

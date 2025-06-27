@@ -8,7 +8,7 @@ features:
   - "Implement intelligent automation and orchestration"
   - "Drive continuous improvement with real-time process monitoring"
 order: 2
-link: "https://appvintech.com/services/celonis-system-integrator"
+link: "https://appvintech.com/services/celonis-system-integrator/"
 ---
 
 # Celonis System Integrator

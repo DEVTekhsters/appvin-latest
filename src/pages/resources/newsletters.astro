@@ -1,0 +1,252 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+// Get all newsletters from the content collection
+const newslettersCollection = await getCollection('newsletters');
+
+// Sort by publication date (newest first)
+const newsletters = newslettersCollection.sort((a, b) => {
+  const dateA = new Date(a.data.pubDate).getTime();
+  const dateB = new Date(b.data.pubDate).getTime();
+  return dateB - dateA;
+});
+
+// Get unique categories for filters
+const categories = [...new Set(newsletters.map(newsletter => newsletter.data.category))];
+
+// Format date function
+function formatDate(date: Date): string {
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(date);
+}
+
+// Image path logic with manual override support
+const getImagePath = (imagePath: string | undefined, fallbackPath: string) => {
+  if (!imagePath) return fallbackPath;
+
+  // If it's a full URL (starts with http/https), use as-is
+  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+    return imagePath;
+  }
+
+  // If it starts with /, treat as absolute path from public folder
+  if (imagePath.startsWith('/')) {
+    return imagePath;
+  }
+
+  // Otherwise, treat as relative path and prepend /images/newsletters/
+  return `/images/newsletters/${imagePath}`;
+};
+---
+
+<Layout
+  title="Newsletters | AppVin Technologies"
+  description="Stay updated with our latest newsletters on AI, technology trends, best practices, and industry insights."
+>
+<Fragment slot="head">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://appvintech.com/resources/newsletters/" />
+</Fragment>
+  <Header />
+
+  <main>
+    <!-- Page Header -->
+    <section class="pt-32 pb-12 md:pt-40 md:pb-20 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            Newsletters
+          </h1>
+          <p class="text-xl text-gray-600 dark:text-gray-400">
+            Stay informed with our latest insights on technology trends, best practices, and industry developments.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletters Section -->
+    <section class="py-16 md:py-24 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+          <!-- Filters -->
+          <div class="mb-12">
+            <div class="flex flex-wrap gap-3 justify-center">
+              <button 
+                class="filter-btn px-4 py-2 rounded-full bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 font-medium text-sm hover:bg-primary-100 dark:hover:bg-primary-800/30 transition-colors"
+                data-category="all"
+              >
+                All Topics
+              </button>
+              {categories.map((category) => (
+                <button 
+                  class="filter-btn px-4 py-2 rounded-full bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                  data-category={category}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <!-- Newsletters Grid -->
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="newsletters-grid">
+            {newsletters.map((newsletter) => (
+              <article 
+                class="newsletter-card card hover:shadow-lg transition-all duration-300 overflow-hidden group cursor-pointer"
+                data-category={newsletter.data.category}
+                onclick={`window.location.href='/resources/newsletters/${newsletter.slug}'`}
+              >
+                <div class="relative overflow-hidden h-48">
+                  <img
+                    src={getImagePath(newsletter.data.image, '/images/newsletters/default.png')}
+                    alt={newsletter.data.title}
+                    class="newsletter-image w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div class="p-6">
+                  <span class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2 block">
+                    {newsletter.data.category}
+                  </span>
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                    {newsletter.data.title}
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                    {newsletter.data.description}
+                  </p>
+                  <div class="flex justify-between items-center">
+                    <div class="flex items-center text-sm text-gray-500 dark:text-gray-500">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      <span>{formatDate(newsletter.data.pubDate)}</span>
+                      {newsletter.data.readTime && (
+                        <>
+                          <span class="mx-2">•</span>
+                          <span>{newsletter.data.readTime}</span>
+                        </>
+                      )}
+                    </div>
+                    <span class="text-primary-600 dark:text-primary-400 font-medium text-sm flex items-center group-hover:translate-x-1 transition-transform">
+                      Read More
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <!-- Newsletter Subscription -->
+          <div class="mt-16 card bg-gradient-to-r from-primary-50/80 to-secondary-50/80 dark:from-primary-900/20 dark:to-secondary-900/20 p-8 relative overflow-hidden">
+            <div class="relative z-10 md:flex items-center justify-between">
+              <div class="md:w-1/2 mb-6 md:mb-0 md:pr-8">
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                  Subscribe to Our Newsletter
+                </h3>
+                <p class="text-gray-700 dark:text-gray-300">
+                  Get the latest newsletters delivered directly to your inbox. Stay updated with technology trends and insights.
+                </p>
+              </div>
+              <div class="md:w-1/2">
+                <form class="flex flex-col sm:flex-row gap-3" action="mailto:abhya.singh@appvintech.com" method="post" enctype="text/plain">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    class="flex-1 px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    required
+                  />
+                  <button
+                    type="submit"
+                    class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors duration-300 whitespace-nowrap"
+                  >
+                    Subscribe
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Remove box shadow from newsletter images */
+  .newsletter-image {
+    box-shadow: none !important;
+    filter: none !important;
+  }
+  
+  .newsletter-image:hover {
+    box-shadow: none !important;
+    filter: none !important;
+  }
+  
+  /* Ensure no shadows in dark mode */
+  .dark .newsletter-image {
+    box-shadow: none !important;
+    filter: none !important;
+  }
+  
+  .dark .newsletter-image:hover {
+    box-shadow: none !important;
+    filter: none !important;
+  }
+
+  /* Line clamp utility */
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Active filter button */
+  .filter-btn.active {
+    @apply bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400;
+  }
+</style>
+
+<script>
+  // Filter functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const newsletterCards = document.querySelectorAll('.newsletter-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const category = this.getAttribute('data-category');
+        
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('active', 'bg-primary-50', 'dark:bg-primary-900/20', 'text-primary-600', 'dark:text-primary-400'));
+        filterButtons.forEach(btn => btn.classList.add('bg-gray-50', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300'));
+        
+        this.classList.remove('bg-gray-50', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
+        this.classList.add('active', 'bg-primary-50', 'dark:bg-primary-900/20', 'text-primary-600', 'dark:text-primary-400');
+
+        // Filter newsletters
+        newsletterCards.forEach(card => {
+          const cardCategory = card.getAttribute('data-category');
+          if (category === 'all' || cardCategory === category) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>

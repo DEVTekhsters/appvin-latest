@@ -60,16 +60,12 @@ import Footer from '../../components/Footer.astro';
             <!-- Whitepaper 1 -->
             <div class="card hover:shadow-lg transition-all duration-300 overflow-hidden group">
               <div class="relative overflow-hidden h-48">
-                <img src="/images/from_code_to_cloud.webp" alt="AI Strategy Whitepaper" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                  <div class="p-4 w-full">
-                    <span class="inline-block px-3 py-1 bg-primary-600/90 text-white text-xs font-medium rounded-full mb-2">
-                      Code To Cloud
-                    </span>
-                  </div>
-                </div>
+                <img src="/images/from_code_to_cloud.webp" alt="AI Strategy Whitepaper" class="whitepaper-image w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               </div>
               <div class="p-6">
+                <span class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2 block">
+                  Code To Cloud
+                </span>
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
                   From Code to Cloud - AppVin Secures Every Step with DevSecOps
                 </h3>
@@ -91,16 +87,12 @@ import Footer from '../../components/Footer.astro';
             <!-- Whitepaper 2 -->
             <div class="card hover:shadow-lg transition-all duration-300 overflow-hidden group">
               <div class="relative overflow-hidden h-48">
-                <img src="/images/cybersecurity_in_software_development.webp" alt="Digital Transformation Whitepaper" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                  <div class="p-4 w-full">
-                    <span class="inline-block px-3 py-1 bg-primary-600/90 text-white text-xs font-medium rounded-full mb-2">
-                      Cybersecurity
-                    </span>
-                  </div>  
-                </div>
+                <img src="/images/cybersecurity_in_software_development.webp" alt="Digital Transformation Whitepaper" class="whitepaper-image w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               </div>
               <div class="p-6">
+                <span class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2 block">
+                  Cybersecurity
+                </span>
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
                   Cybersecurity in Software Development: A Critical Focus for 2025
                 </h3>
@@ -159,3 +151,27 @@ import Footer from '../../components/Footer.astro';
 
   <Footer />
 </Layout>
+
+<style>
+  /* Remove box shadow from whitepaper images */
+  .whitepaper-image {
+    box-shadow: none !important;
+    filter: none !important;
+  }
+
+  .whitepaper-image:hover {
+    box-shadow: none !important;
+    filter: none !important;
+  }
+
+  /* Ensure no shadows in dark mode */
+  .dark .whitepaper-image {
+    box-shadow: none !important;
+    filter: none !important;
+  }
+
+  .dark .whitepaper-image:hover {
+    box-shadow: none !important;
+    filter: none !important;
+  }
+</style>

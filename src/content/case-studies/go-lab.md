@@ -25,7 +25,7 @@ category: "Transportation & Logistics"
 featured: true
 pubDate: "2024-03-05"
 order: 5
-link: "https://appvintech.com/case-studies/go-lab"
+link: "https://appvintech.com/case-studies/go-lab/"
 ---
 
 ## Project Overview

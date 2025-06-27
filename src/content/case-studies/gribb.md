@@ -26,7 +26,7 @@ category: "Transportation & Logistics"
 featured: true
 pubDate: "2023-04-15"
 order: 1
-link: "https://appvintech.com/case-studies/gribb"
+link: "https://appvintech.com/case-studies/gribb/"
 ---
 
 ## Project Overview
