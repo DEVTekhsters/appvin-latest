@@ -4,7 +4,7 @@ description: "The fintech industry is evolving rapidly, driven by technological 
 category: "Fintech"
 pubDate: 2025-04-06
 # Example 3: External URL (will be used as-is)
-image: "/public/images/revolutionizing_fintech_with_custom_software.png"
+image: "/images/revolutionizing_fintech_with_custom_software.png"
 # Example: No featuredImage specified, will use the same image as card
 featured: false
 order: 3
