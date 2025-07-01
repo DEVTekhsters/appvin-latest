@@ -4,9 +4,9 @@ description: "In today’s digital world, data is crucial for every organization
 category: "Data Governance"
 pubDate: 2025-06-17
 # Example 1: Absolute path from public folder
-image: "/public/images/harnessing_data_governance_and_compliance_in_modern_enterprise_apps.png"
+image: "/images/harnessing_data_governance_and_compliance_in_modern_enterprise_apps.png"
 # Example: Different image for the individual newsletter page
-featuredImage: "/public/images/harnessing_data_governance_and_compliance_in_modern_enterprise_apps.png"
+featuredImage: "/images/harnessing_data_governance_and_compliance_in_modern_enterprise_apps.png"
 featured: true
 order: 1
 # readTime: "8 min read"    
