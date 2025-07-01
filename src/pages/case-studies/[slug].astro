@@ -53,6 +53,9 @@ const relatedCaseStudies = allCaseStudies
   ogDescription={description}
   ogImage={image || '/images/case-study-default.jpg'}
 >
+<Fragment slot="head">
+  <meta name="robots" content="index, follow">
+</Fragment>
   <Header />
 
   <main>

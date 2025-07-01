@@ -19,10 +19,14 @@ const formattedPublishDate = formatDate(publishDate);
 <Layout
   title={`${title} | AppVin Technologies Blog`}
   description={description}
+  canonical={`https://appvintech.com/blog/${slug}/`}
   ogTitle={title}
   ogDescription={description}
   ogImage={image || '/images/blog-default.jpg'}
 >
+<Fragment slot="head">
+  <meta name="robots" content="index, follow">
+</Fragment>
   <Header />
   <article class="pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden no-scrollbar">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">

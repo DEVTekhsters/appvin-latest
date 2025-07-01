@@ -62,7 +62,11 @@ const allTags = [...hardcodedTags].sort();
 <Layout
   title={`${tag} - Blog | AI Native Digital Agency`}
   description={`Articles and insights about ${tag} from our expert team.`}
+  canonical={`https://appvintech.com/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}/`}
 >
+<Fragment slot="head">
+  <meta name="robots" content="index, follow">
+</Fragment>
   <Header />
 
   <main>

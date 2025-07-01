@@ -20,7 +20,11 @@ const categoryPosts = blogPosts.filter(post => post.category === category);
 <Layout
   title={`${category} Articles | AppVin Technologies`}
   description={`Explore our articles about ${category.toLowerCase()} from our expert team.`}
+  canonical={`https://appvintech.com/blog/category/${category.toLowerCase().replace(/\s+/g, '-')}/`}
 >
+<Fragment slot="head">
+  <meta name="robots" content="index, follow">
+</Fragment>
   <Header />
 
   <main class="overflow-x-hidden w-full no-scrollbar">
