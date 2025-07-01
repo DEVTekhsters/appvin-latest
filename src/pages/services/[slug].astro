@@ -46,6 +46,7 @@ const sortedServices = allServices.sort((a, b) => {
 >
 
 <Fragment slot="head">
+  <meta name="robots" content="index, follow">
   {jsonLdSchemas[entry.slug] && (
     <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLdSchemas[entry.slug])}></script>
   )}

@@ -74,6 +74,9 @@ function formatDate(date: Date): string {
   ogDescription={description}
   ogImage={pageImage}
 >
+<Fragment slot="head">
+  <meta name="robots" content="index, follow">
+</Fragment>
   <Header />
 
   <main>
