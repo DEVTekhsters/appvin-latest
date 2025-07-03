@@ -1,0 +1,39 @@
+---
+// Redirect page for legacy URL
+// Redirects /enterprise-app-development/ to /services/enterprise-app-development/
+
+export const prerender = true;
+
+// Server-side redirect
+if (Astro.request) {
+  return Astro.redirect('/services/enterprise-app-development/', 301);
+}
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <meta name="robots" content="noindex, nofollow">
+  
+  <!-- Immediate client-side redirect -->
+  <script>
+    window.location.replace('/services/enterprise-app-development/');
+  </script>
+  
+  <!-- Meta refresh as fallback -->
+  <meta http-equiv="refresh" content="0; url=/services/enterprise-app-development/">
+  
+  <!-- Canonical link pointing to the new URL -->
+  <link rel="canonical" href="https://appvintech.com/services/enterprise-app-development/">
+</head>
+<body>
+  <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+    <h1>Redirecting...</h1>
+    <p>You are being redirected to our Enterprise App Development service page.</p>
+    <p>If you are not redirected automatically, <a href="/services/enterprise-app-development/">click here</a>.</p>
+  </div>
+</body>
+</html>
