@@ -3,11 +3,11 @@ import { getCollection } from 'astro:content';
 
 const navItems = [
   { name: "Home", url: "/" },
-  { name: "About", url: "/about" },
-  { name: "Services", url: "/services" },
-  { name: "Resources", url: "/resources" },
-  { name: "Careers", url: "/careers" },
-  { name: "Contact", url: "/contact" },
+  { name: "About", url: "/about/" },
+  { name: "Services", url: "/services/" },
+  { name: "Resources", url: "/resources/" },
+  { name: "Careers", url: "/careers/" },
+  { name: "Contact", url: "/contact/" },
 ];
 
 // Get all services for the dropdown
@@ -23,13 +23,13 @@ const sortedServices = servicesCollection.sort((a, b) => {
 
 // Resources for the dropdown
 const resourcesItems = [
-  { name: "Blog", url: "/blog" },
-  { name: "Case Studies", url: "/case-studies" },
-  { name: "Whitepapers", url: "/resources/whitepapers" },
-  { name: "Newsletters", url: "/resources/newsletters" },
-  // { name: "Webinars", url: "/resources/webinars" },
-  // { name: "Documentation", url: "/docs" },
-  // { name: "FAQ", url: "/resources/faq" },
+  { name: "Blog", url: "/blog/" },
+  { name: "Case Studies", url: "/case-studies/" },
+  { name: "Whitepapers", url: "/resources/whitepapers/" },
+  { name: "Newsletters", url: "/resources/newsletters/" },
+  // { name: "Webinars", url: "/resources/webinars/" },
+  // { name: "Documentation", url: "/docs/" },
+  // { name: "FAQ", url: "/resources/faq/" },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -86,7 +86,7 @@ const currentPath = Astro.url.pathname;
                     <div class="space-y-1">
                       {sortedServices.map((service) => (
                         <a
-                          href={`/services/${service.slug}`}
+                          href={`/services/${service.slug}/`}
                           class="block px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-all duration-200"
                         >
                           {service.data.title}
@@ -95,7 +95,7 @@ const currentPath = Astro.url.pathname;
                     </div>
                     <div class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
                       <a
-                        href="/services"
+                        href="/services/"
                         class="flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20 rounded-lg hover:bg-primary-100 dark:hover:bg-primary-800/30 transition-colors"
                       >
                         View All Services
@@ -225,14 +225,14 @@ const currentPath = Astro.url.pathname;
                 <div class="mobile-dropdown-content hidden mt-2 ml-4 space-y-2">
                   {sortedServices.map((service) => (
                     <a
-                      href={`/services/${service.slug}`}
+                      href={`/services/${service.slug}/`}
                       class="block px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-all duration-200"
                     >
                       {service.data.title}
                     </a>
                   ))}
                   <a
-                    href="/services"
+                    href="/services/"
                     class="block px-3 py-2 text-sm font-medium text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20 rounded-lg hover:bg-primary-100 dark:hover:bg-primary-800/30 transition-colors"
                   >
                     View All Services
