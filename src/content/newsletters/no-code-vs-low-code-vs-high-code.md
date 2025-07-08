@@ -2,7 +2,7 @@
 title: "No-Code vs Low-Code vs High-Code: Choose the Right Development Fit"
 description: "Compare no-code, low-code, and high-code development approaches. Find the right fit for your business. Which option helps you balance speed, flexibility, and control."
 category: "No code vs Low code"
-pubDate: 2025-01-10
+pubDate: 2025-04-30
 image: "/images/no-code-vs-low-code-vs-high-code.jpg"
 featuredImage: "/images/no-code-vs-low-code-vs-high-code.jpg"
 featured: false
