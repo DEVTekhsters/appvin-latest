@@ -2,7 +2,7 @@
 title: "AI in FinTech: How AI Is Transforming Finance’s Future"
 description: "AI is reshaping finance fast. See how it makes loans, trading, and investing easier for everyone in the evolving financial ecosystem. Stay informed and adapt now."
 category: "Fintech"
-pubDate: 2025-01-20
+pubDate: 2025-05-07
 image: "/images/ai-in-fintech-how-ai-is-transforming-finance’s-future.jpg"
 featuredImage: "/images/ai-in-fintech-how-ai-is-transforming-finance’s-future.jpg"
 featured: true

@@ -2,9 +2,6 @@ User-agent: *
 Disallow: /wp-admin/
 Disallow: /wp-login.php
 Disallow: /cgi-bin/
-Disallow: /privacy-policy/
-Disallow: /terms-of-service/
-Disallow: /cookie-policy/
 Allow: /
 
 # Sitemap location
