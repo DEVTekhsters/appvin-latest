@@ -3,8 +3,8 @@ title: "Transforming Road Safety Through Behavioral Intelligence"
 description: "Gribb helps roads become safer by understanding driver habits. Know how behavioral skills transform road safety, promoting proactive, data-driven fleet management."
 category: "AI & Machine Learning"
 pubDate: 2025-05-29
-image: "/images/transforming-road-safety-through-behavioral-intelligence.png"
-featuredImage: "/images/transforming-road-safety-through-behavioral-intelligence.png"
+image: "/images/transforming-road-safety-through-behavioral-intelligence.jpg"
+featuredImage: "/images/transforming-road-safety-through-behavioral-intelligence.jpg"
 featured: false
 order: 7
 # readTime: "14 min read"
