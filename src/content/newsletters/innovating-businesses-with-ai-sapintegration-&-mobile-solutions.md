@@ -13,7 +13,7 @@ order: 8
 
 # Unlock Efficiency, Scalability, and Growth with AppVin Technologies
 
-In today’s fast-paced digital world, businesses need intelligent automation, seamless integrations, and mobile-first strategies to stay competitive. At AppVin Technologies, we specialize in AI-Powered Innovation with SAP and Mobile Integration to help businesses optimize operations and enhance customer engagement.
+In today’s fast-paced digital world, businesses need intelligent automation, seamless integrations, and mobile-first strategies to stay competitive. At AppVin Technologies, we specialize in AI-Powered Innovation with <a href="https://appvintech.com/services/sap-integration/">SAP and Mobile Integration</a> to help businesses optimize operations and enhance customer engagement.
 
 ## Challenges & Solutions in Digital Transformation
 
@@ -36,7 +36,7 @@ In today’s fast-paced digital world, businesses need intelligent automation, s
 
 ### SAP Integration & Custom Software Development 
 
-Struggling with inefficiencies and system disconnects? Our SAP Integration and Custom Software Solutions help businesses:
+Struggling with inefficiencies and system disconnects? Our <a href="https://appvintech.com/services/sap-integration/">SAP Integration</a> and <a href="https://appvintech.com/services/cross-platform-development/">Custom Software Solutions</a> help businesses:
 
 - Automate workflows & improve operational efficiency
 - Seamlessly connect ERP, CRM, and third-party tools

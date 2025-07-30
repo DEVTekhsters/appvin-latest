@@ -19,7 +19,7 @@ Let’s explore some of the most powerful use cases where AI is elevating FinTec
 
 **1.Fraud Detection & Prevention**
 
-Security is paramount in financial services. At AppVin, we integrate advanced AI and machine learning models to analyze massive datasets in real time-detecting suspicious patterns and mitigating fraud risks before they escalate. 
+Security is paramount in financial services. At AppVin, we <a href="https://appvintech.com/services/custom-ai-solutions/">integrate advanced AI and machine learning</a> models to analyze massive datasets in real time-detecting suspicious patterns and mitigating fraud risks before they escalate. 
 
 AI’s predictive capabilities allow us to build FinTech platforms that:
 
@@ -51,7 +51,7 @@ Know Your Customer (KYC) processes are essential but often tedious. With AppVin�
 
 - Maintain compliance while delivering a smoother user experience.
 
-Using AI and machine learning, we enable faster, more accurate KYC that supports risk assessment and ensures secure user onboarding.
+Using AI and machine learning, we enable faster, more <a href="https://appvintech.com/services/data-governance/">accurate KYC that supports risk assessment</a> and ensures secure user onboarding.
 
 **4. Automated Trading Strategies**
 

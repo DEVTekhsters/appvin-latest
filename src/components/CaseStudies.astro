@@ -228,9 +228,11 @@ const featuredCaseStudies = [
               )}
             </div>
 
-            <h3 class="text-xl font-extrabold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-              {study.data.title}
-            </h3>
+            <a href={`/case-studies/${study.slug}`} class="block">
+              <h3 class="text-xl font-extrabold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                {study.data.title}
+              </h3>
+            </a>
 
             <div class="content-list-container flex-grow overflow-y-auto">
               <p class="text-gray-600 dark:text-gray-400 mb-4 text-base">
