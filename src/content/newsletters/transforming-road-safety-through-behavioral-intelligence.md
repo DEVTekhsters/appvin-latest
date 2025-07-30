@@ -11,7 +11,7 @@ order: 7
 # tags: ["Cybersecurity", "Enterprise Security", "Risk Management", "Compliance", "Data Protection"]
 ---
 
-At AppVin, we take pride in creating technology that drives change - literally. One of our latest projects, in partnership with Gribb, demonstrates how innovative mobile solutions and AI integration can advance road safety and sustainability.
+At AppVin, we take pride in creating technology that drives change - literally. One of our latest projects, in partnership with Gribb, demonstrates how innovative mobile solutions and <a href="https://appvintech.com/services/custom-ai-solutions/">AI integration</a> can advance road safety and sustainability.
 
 ## Behind the Innovation
 
@@ -71,4 +71,4 @@ Through this collaboration, Gribb achieved:
 
 ## Final Thoughts
 
-The Gribb project exemplifies what’s possible when innovation, technology, and a commitment to social impact come together. By combining AI-driven analytics, seamless app development, and scalable cloud architecture, AppVin helped Gribb set a new standard in road safety solutions.
+The Gribb project exemplifies what’s possible when innovation, technology, and a commitment to social impact come together. By combining AI-driven analytics, <a href="https://appvintech.com/">seamless app development</a>, and scalable cloud architecture, AppVin helped Gribb set a new standard in road safety solutions.

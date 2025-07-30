@@ -109,9 +109,11 @@ const services = servicesCollection.sort((a, b) => {
                   </div>
                 </div>
 
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors text-center">
-                  {service.data.title}
-                </h3>
+                <a href={`/services/${service.slug}`} class="block">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors text-center">
+                    {service.data.title}
+                  </h3>
+                </a>
 
                 <p class="text-gray-600 dark:text-gray-400 mb-6 text-center">
                   {service.data.description}
