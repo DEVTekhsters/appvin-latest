@@ -35,6 +35,10 @@ const {
 <!doctype html>
 <html lang="en" class="overflow-x-hidden smooth-scroll light">
   <head>
+    <!-- Include the Cookie Banner Bundle from S3 -->
+    <script src="https://d1axzsitviir9s.cloudfront.net/gotrust-consent-shim.v1.0.0.min.js" data-safe="true"></script>
+    <script src="https://d1axzsitviir9s.cloudfront.net/cookie-banner.bundle.js" data-safe="true"></script>
+
     <link rel="icon" type="image/png" href="/images/appvin-icon.png" />
     <SEO
       title={title}
@@ -51,7 +55,7 @@ const {
     />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WZX9S8DXH7"></script>
-    <script>
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -106,6 +110,8 @@ const {
     </script>
   </head>
   <body class="overflow-x-hidden w-full no-scrollbar smooth-scroll">
+    <!-- Consent Widget Script -->
+    <script src="https://gotrust-third-party-service.s3.ap-south-1.amazonaws.com/consent-widget.js" content-id="960628" base-url="https://sandbox.gotrust.tech/universal"></script>
     <div class="overflow-x-hidden w-full no-scrollbar smooth-scroll">
       <slot />
     </div>

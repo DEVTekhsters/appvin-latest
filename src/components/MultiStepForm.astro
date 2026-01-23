@@ -238,6 +238,7 @@
         </button>
         <button
           type="submit"
+          id="submit-button"
           class="btn btn-primary"
         >
           Submit Request
@@ -262,29 +263,118 @@
     </div>
   </form>
 </div>
-<script lang="js">
-  const form = document.getElementById("multi-step-form");
-  form?.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
-      console.log(data);
-    try {
-      const res = await fetch('/api/contact', {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (res.ok) {
-  const result = await res.json();
-  console.log("Success:", result);
-} else {
-  const text = await res.text(); // fallback to see what the response is
-  console.error("Error response:", text);
-}
-    } catch (err) {
-      alert(`Failed to send message.${err}`);
+
+
+<script is:inline>
+  // Consent and form submission logic
+  let consentRecordId = null;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById("multi-step-form");
+    const submitButton = document.getElementById("submit-button");
+    const successMessage = document.querySelector('.success-message');
+
+    if (!form || !submitButton) return;
+
+    // Function to submit form data to API
+    async function submitFormData(consentRecordId) {
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      // Add consent record ID
+      if (consentRecordId) {
+        data.consentRecordId = consentRecordId;
+      }
+
+      console.log('Submitting form data:', data);
+
+      try {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Submitting...';
+
+        const res = await fetch('/api/contact', {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        if (res.ok) {
+          const result = await res.json();
+          console.log("Success:", result);
+
+          // Hide form and show success message
+          form.style.display = 'none';
+          if (successMessage) {
+            successMessage.classList.remove('hidden');
+          }
+        } else {
+          const text = await res.text();
+          console.error("Error response:", text);
+          submitButton.disabled = false;
+          submitButton.textContent = 'Submit Request';
+        }
+      } catch (err) {
+        console.error('Form submission error:', err);
+        submitButton.disabled = false;
+        submitButton.textContent = 'Submit Request';
+      }
     }
+
+    // Form submit handler - trigger consent modal first
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const email = formData.get('email');
+      const name = formData.get('name');
+
+      if (!email || !name) {
+        alert('Please fill in your name and email in Step 1 first.');
+        return;
+      }
+
+      // Trigger consent modal
+      if (typeof window.triggerConsentModal === 'function') {
+        console.log('Triggering consent modal:', {
+          contentId: '960628',
+          baseURL: 'https://sandbox.gotrust.tech/universal',
+          additionalInfo: {
+            '163': email,
+            '8': name,
+          },
+        });
+
+        window.triggerConsentModal(
+          {
+            contentId: '960628',
+            baseURL: 'https://sandbox.gotrust.tech/universal',
+            additionalInfo: {
+              '163': email,
+              '8': name,
+            },
+          },
+          {
+            onSuccess: async (data) => {
+              console.log('Consent collected successfully', data);
+              consentRecordId = data.response?.result?.recordId || null;
+
+              // Submit form after successful consent
+              await submitFormData(consentRecordId);
+            },
+            onError: (error) => {
+              console.error('Consent submission failed:', error);
+              alert('Failed to submit consent. Please try again.');
+            },
+            onClose: () => {
+              console.log('User closed the consent modal without providing consent');
+            },
+          }
+        );
+      } else {
+        console.error('Consent widget not loaded');
+        alert('Consent widget is not available. Please refresh the page.');
+      }
+    });
   });
 </script>
 
