@@ -11,7 +11,7 @@ import BlogPreview from '../components/BlogPreview.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 ---
-  
+
 <Layout
   title="Top-Rated Software Development & Custom AI Services | AppVin"
   description="A leading AI-powered software development company with 120+ completed projects. Transform your business with scalable custom software and AI-native solutions."
@@ -40,33 +40,48 @@ import Footer from '../components/Footer.astro';
 
   <main>
     <!-- Embed the Cookie Banner -->
-    <div id="cookie-banner"></div>
+    <div id="gotrust-cookie-banner"></div>
 
-    <!-- Include the Cookie Banner Bundle from S3 -->
-    <script src="https://ydt-aws-bucket.s3.ap-south-1.amazonaws.com/cookie-banner.bundle.js"></script>
-
-    <script>
-      declare global {
-        interface Window {
-          CookieBanner: {
-            init: (selector: string, config: { domainUrl: string; environment: string }) => void;
-          };
+    <script is:inline>
+      (function () {
+        function ready(fn) {
+          if (document.readyState !== 'loading') fn();
+          else document.addEventListener('DOMContentLoaded', fn);
         }
-      }
 
-      function loadBanner() {
-        if (window.CookieBanner) {
-          // Ensure the CookieBanner object is available
-          window.CookieBanner.init('#cookie-banner', {
+        function tryInit() {
+          if (!window.CookieBanner || typeof window.CookieBanner.init !== 'function') {
+            return false;
+          }
+
+          var el = document.querySelector('#gotrust-cookie-banner');
+          if (!el) return false;
+
+          if (el.__gotrustMounted) return true;
+
+          var respectDNT = (navigator.doNotTrack === '1' || navigator.doNotTrack === 'yes');
+
+          window.CookieBanner.init('#gotrust-cookie-banner', {
             domainUrl: 'https://appvintech.com/',
-            environment: 'sandbox',
+            environment: 'https://sandbox.gotrust.tech',
+            domain_id: '244',
           });
-        } else {
-          setTimeout(loadBanner, 100);
+          return true;
         }
-      }
 
-      window.onload = loadBanner;
+        ready(function () {
+          if (tryInit()) return;
+
+          function onReady() { if (tryInit()) window.removeEventListener('CookieBannerReady', onReady); }
+          window.addEventListener('CookieBannerReady', onReady);
+
+          var attempts = 0;
+          var t = setInterval(function () {
+            attempts++;
+            if (tryInit() || attempts > 20) clearInterval(t);
+          }, 100);
+        });
+      })();
     </script>
 
     <Hero />

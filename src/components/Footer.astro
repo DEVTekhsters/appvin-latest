@@ -90,7 +90,7 @@ const socialLinks = [
 </defs>
 </svg>
 
- 
+
               )}
               {link.icon === 'linkedin' && (
                 <svg width="24" height="24" viewBox="0 0 347 343" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -337,6 +337,24 @@ const socialLinks = [
                 <span class="group-hover:translate-x-1 transition-transform duration-300">GDPR</span>
               </a>
             </li>
+            <li>
+              <a href="https://sandbox.gotrust.tech/notice/266?customer_id=4" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">Privacy Notice</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://sandbox.gotrust.tech/pf?customer_id=zjsDHo1S_s47yAFu-tJ9BmDR31PEFmBdrVxqm9w%3D&pf_id=GbhzSiEWzX7LNMDMev4EEMh_Y6WUdg1F9W4FtNjHGw%3D%3D" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">Preference Center</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://sandbox.gotrust.tech/dsr/request-form/U2FsdGVkX1Por21Lddt9pwPor21LdKXbx5bRxavS7YXgb4ESvHoN28Y_/U2FsdGVkX1Por21LdpyS4JLLzrntpvvRsXaXNm7BOopRyim50_" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">DSR Form</span>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -518,7 +536,7 @@ const socialLinks = [
         </div>
       </div>
     </div>
-  </div>  
+  </div>
 </footer>
 
 <script lang="js">
@@ -529,7 +547,7 @@ const socialLinks = [
     const data = Object.fromEntries(formData.entries());
       console.log(data);
     try {
-      const res = await fetch('https://api.appvintech.com/api/newsletter', {
+      const res = await fetch('/api/newsletter', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -541,7 +559,7 @@ const socialLinks = [
   console.error("Error response:", text);
 }
     } catch (err) {
-      alert(`Failed to send message.${err}`);
+      console.log(`Failed to send message.${err}`);
     }
   });
 </script>

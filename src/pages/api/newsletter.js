@@ -18,41 +18,33 @@ export async function POST({ request }) {
   try {
     // Parse the request body
     const body = await request.json();
-    const { name, email, subject, message, budget, contact_method, preferred_date, preferred_time } = body;
+    const { email } = body;
 
-    // Validate required fields
-    if (!name || !email || !message || !budget || !contact_method || !preferred_date || !preferred_time) {
+    // Validate required field
+    if (!email) {
       return new Response(
-        JSON.stringify({ error: 'Missing required fields' }),
+        JSON.stringify({ error: 'Email is required' }),
         { status: 400, headers: { 'Content-Type': 'application/json' } }
       );
     }
 
     const smtpEmail = import.meta.env.SMTP_EMAIL || process.env.SMTP_EMAIL || 'sales@appvintech.com';
 
-    // Send email to company
+    // Send notification to company
     await transporter.sendMail({
       from: smtpEmail,
       to: smtpEmail,
-      subject: 'AppVin - Contact Enquiry Form',
-      text:
-        `Name: ${name}\n` +
-        `Email: ${email}\n` +
-        `Subject: ${subject}\n` +
-        `Message: ${message}\n` +
-        `Budget: ${budget}\n` +
-        `Preferred Contact Method: ${contact_method}\n` +
-        `Preferred Date: ${preferred_date}\n` +
-        `Preferred Time: ${preferred_time}`,
+      subject: 'New Newsletter Subscription',
+      text: `New newsletter subscription:\n\nEmail: ${email}\n`,
       replyTo: email,
     });
 
-    // Send confirmation email to user
+    // Send confirmation to subscriber
     await transporter.sendMail({
       from: smtpEmail,
       to: email,
-      subject: 'Thanks for contacting us!',
-      text: `Hi ${name},\n\nThank you for reaching out! We have received your query:\n\n"${message}"\n\nWe will get back to you soon.\n\nRegards,\nAppVin Technologies Team`,
+      subject: 'Thanks for Subscribing!',
+      text: `Hi there,\n\nThank you for subscribing to our newsletter! We'll keep you updated with our latest insights on AI, digital transformation, and product engineering.\n\nBest regards,\nAppVin Technologies Team`,
     });
 
     return new Response(
@@ -60,10 +52,10 @@ export async function POST({ request }) {
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     );
 
-  } catch (err) {
-    console.error('Contact form error:', err);
+  } catch (error) {
+    console.error('Newsletter subscription error:', error);
     return new Response(
-      JSON.stringify({ error: 'Failed to send email', details: err.message }),
+      JSON.stringify({ error: 'Failed to subscribe', details: error.message }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
   }
