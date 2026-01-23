@@ -14,10 +14,10 @@ export default defineConfig({
   output: 'server',
 
   // Dev server configuration
-  server: {
-    port: 3000,
-    host: true
-  },
+  // server: {
+  //   port: 3000,
+  //   host: true
+  // },
 
   // Use Node.js adapter
   adapter: node({
