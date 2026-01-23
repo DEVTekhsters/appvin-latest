@@ -90,7 +90,7 @@ const socialLinks = [
 </defs>
 </svg>
 
- 
+
               )}
               {link.icon === 'linkedin' && (
                 <svg width="24" height="24" viewBox="0 0 347 343" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -518,7 +518,7 @@ const socialLinks = [
         </div>
       </div>
     </div>
-  </div>  
+  </div>
 </footer>
 
 <script lang="js">
@@ -529,7 +529,7 @@ const socialLinks = [
     const data = Object.fromEntries(formData.entries());
       console.log(data);
     try {
-      const res = await fetch('https://api.appvintech.com/api/newsletter', {
+      const res = await fetch('/api/newsletter', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

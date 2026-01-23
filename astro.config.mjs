@@ -3,11 +3,20 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
+import node from '@astrojs/node';
 
 // https://astro.build/config
 export default defineConfig({
   // Replace with your actual domain when deployed
   site: 'https://appvintech.com',
+
+  // Enable server mode for API routes
+  output: 'server',
+
+  // Use Node.js adapter
+  adapter: node({
+    mode: 'standalone'
+  }),
 
   integrations: [
     mdx(),
