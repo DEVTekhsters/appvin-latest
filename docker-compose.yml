@@ -1,0 +1,9 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: appvin-latest
+    ports:
+      - "127.0.0.1:4444:80"
+    restart: unless-stopped

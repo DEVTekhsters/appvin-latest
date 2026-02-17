@@ -4,9 +4,6 @@ dist/
 # generated types
 .astro/
 
-#backend env
-src/pages/api/.env
-
 # dependencies
 node_modules/
 
