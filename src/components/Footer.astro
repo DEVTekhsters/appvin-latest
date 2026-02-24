@@ -1,5 +1,6 @@
 ---
 const currentYear = new Date().getFullYear();
+const PUBLIC_API_URL = import.meta.env.PUBLIC_API_URL ?? "";
 
 // Footer links are now directly hardcoded in the component
 // const footerLinks = [
@@ -539,111 +540,103 @@ const socialLinks = [
   </div>
 </footer>
 
-<script lang="js">
-  const newsLetterForm = document.getElementById("newsletter-form");
-  newsLetterForm?.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
-      console.log(data);
-    try {
-      const res = await fetch('/api/newsletter', {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (res.ok) {
-  const result = await res.json();
-} else {
-  const text = await res.text(); // fallback to see what the response is
-  console.error("Error response:", text);
-}
-    } catch (err) {
-      console.log(`Failed to send message.${err}`);
-    }
-  });
-</script>
+<script define:vars={{ PUBLIC_API_URL }}>
+    window.__NEWSLETTER_API_BASE__ = PUBLIC_API_URL;
+  </script>
+  <script is:inline>
+    // Newsletter form submission
+    document.addEventListener("DOMContentLoaded", () => {
+      // Newsletter form handling
+      const newsletterForm = document.getElementById("newsletter-form");
+      const newsletterSuccess = document.getElementById("newsletter-success");
+      const newsletterError = document.getElementById("newsletter-error");
 
-<script is:inline>
-  // Newsletter form submission
-  document.addEventListener('DOMContentLoaded', () => {
-    // Newsletter form handling
-    const newsletterForm = document.getElementById('newsletter-form');
-    const newsletterSuccess = document.getElementById('newsletter-success');
-    const newsletterError = document.getElementById('newsletter-error');
-
-    if (newsletterForm && newsletterForm instanceof HTMLFormElement) {
-      newsletterForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        // Simulate form submission
-        const emailInput = document.getElementById('newsletter-email');
-        const consentInput = document.getElementById('newsletter-consent');
-
-        if (emailInput instanceof HTMLInputElement &&
-            consentInput instanceof HTMLInputElement &&
-            emailInput.value &&
-            consentInput.checked) {
-          // Hide the form and show success message
-          newsletterForm.classList.add('opacity-50', 'pointer-events-none');
-
-          if (newsletterSuccess) {
-            newsletterSuccess.classList.remove('hidden');
+      if (newsletterForm && newsletterForm instanceof HTMLFormElement) {
+        const submitBtn = newsletterForm.querySelector('button[type="submit"]');
+        const originalBtnHTML = submitBtn ? submitBtn.innerHTML : "";
+        newsletterForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const formData = new FormData(newsletterForm);
+          const data = Object.fromEntries(formData.entries());
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = "Sending...";
           }
-
-          // In a real implementation, you would send the data to your server here
-          console.log('Newsletter subscription:', { email: emailInput.value, consent: consentInput.checked });
-
-          // Reset form after 5 seconds for demo purposes
-          setTimeout(() => {
-            newsletterForm.reset();
-            newsletterForm.classList.remove('opacity-50', 'pointer-events-none');
-
-            if (newsletterSuccess) {
-              newsletterSuccess.classList.add('hidden');
+          newsletterForm.classList.add("opacity-75", "pointer-events-none");
+          if (newsletterSuccess) newsletterSuccess.classList.add("hidden");
+          if (newsletterError) newsletterError.classList.add("hidden");
+          try {
+            const apiBase = window.__NEWSLETTER_API_BASE__;
+            const apiUrl = apiBase
+              ? apiBase + "/api/newsletter"
+              : "/api/newsletter";
+            const res = await fetch(apiUrl, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(data),
+            });
+            if (res.ok) {
+              if (newsletterSuccess)
+                newsletterSuccess.classList.remove("hidden");
+              newsletterForm.reset();
+              setTimeout(() => {
+                if (newsletterSuccess)
+                  newsletterSuccess.classList.add("hidden");
+              }, 5000);
+            } else {
+              const text = await res.text();
+              console.error("Newsletter error:", text);
+              if (newsletterError) newsletterError.classList.remove("hidden");
+              setTimeout(() => {
+                if (newsletterError) newsletterError.classList.add("hidden");
+              }, 4000);
             }
-          }, 5000);
-        } else {
-          // Show error message
-          if (newsletterError) {
-            newsletterError.classList.remove('hidden');
-
-            // Hide error after 3 seconds
+          } catch (err) {
+            console.error("Newsletter request failed:", err);
+            if (newsletterError) newsletterError.classList.remove("hidden");
             setTimeout(() => {
-              newsletterError.classList.add('hidden');
-            }, 3000);
+              if (newsletterError) newsletterError.classList.add("hidden");
+            }, 4000);
+          } finally {
+            newsletterForm.classList.remove(
+              "opacity-75",
+              "pointer-events-none",
+            );
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = originalBtnHTML;
+            }
           }
-        }
-      });
-    }
-
-    // Back to top functionality
-    const backToTopButton = document.getElementById('back-to-top');
-
-    if (backToTopButton) {
-      backToTopButton.addEventListener('click', () => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
         });
-      });
+      }
 
-      // Show/hide back to top button based on scroll position
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) {
-          backToTopButton.classList.add('opacity-100');
-          backToTopButton.classList.remove('opacity-0');
-        } else {
-          backToTopButton.classList.add('opacity-0');
-          backToTopButton.classList.remove('opacity-100');
-        }
-      });
-    }
+      // Back to top functionality
+      const backToTopButton = document.getElementById("back-to-top");
 
-    // Office location cards hover effect is now handled by CSS classes
-    // No JavaScript needed for the hover effect anymore
-  });
-</script>
+      if (backToTopButton) {
+        backToTopButton.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+
+        // Show/hide back to top button based on scroll position
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 500) {
+            backToTopButton.classList.add("opacity-100");
+            backToTopButton.classList.remove("opacity-0");
+          } else {
+            backToTopButton.classList.add("opacity-0");
+            backToTopButton.classList.remove("opacity-100");
+          }
+        });
+      }
+
+      // Office location cards hover effect is now handled by CSS classes
+      // No JavaScript needed for the hover effect anymore
+    });
+  </script>
 
 <style>
   /* Grid pattern background */

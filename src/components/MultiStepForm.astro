@@ -1,6 +1,8 @@
 ---
 // MultiStepForm.astro - A multi-step form component for better conversion
+const PUBLIC_API_URL = import.meta.env.PUBLIC_API_URL ?? "";
 ---
+
 
 <div class="multi-step-form bg-gray-50 dark:bg-gray-800 rounded-lg p-8 shadow-sm">
   <div class="mb-6">
@@ -265,14 +267,17 @@
 </div>
 
 
+<script define:vars={{ PUBLIC_API_URL }}>
+  window.__CONTACT_API_BASE__ = PUBLIC_API_URL;
+</script>
 <script is:inline>
   // Consent and form submission logic
   let consentRecordId = null;
 
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("multi-step-form");
     const submitButton = document.getElementById("submit-button");
-    const successMessage = document.querySelector('.success-message');
+    const successMessage = document.querySelector(".success-message");
 
     if (!form || !submitButton) return;
 
@@ -286,13 +291,15 @@
         data.consentRecordId = consentRecordId;
       }
 
-      console.log('Submitting form data:', data);
+      console.log("Submitting form data:", data);
 
       try {
         submitButton.disabled = true;
-        submitButton.textContent = 'Submitting...';
+        submitButton.textContent = "Submitting...";
 
-        const res = await fetch('/api/contact', {
+        const apiBase = window.__CONTACT_API_BASE__;
+        const apiUrl = apiBase ? apiBase + "/api/contact" : "/api/contact";
+        const res = await fetch(apiUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
@@ -303,20 +310,20 @@
           console.log("Success:", result);
 
           // Hide form and show success message
-          form.style.display = 'none';
+          form.style.display = "none";
           if (successMessage) {
-            successMessage.classList.remove('hidden');
+            successMessage.classList.remove("hidden");
           }
         } else {
           const text = await res.text();
           console.error("Error response:", text);
           submitButton.disabled = false;
-          submitButton.textContent = 'Submit Request';
+          submitButton.textContent = "Submit Request";
         }
       } catch (err) {
-        console.error('Form submission error:', err);
+        console.error("Form submission error:", err);
         submitButton.disabled = false;
-        submitButton.textContent = 'Submit Request';
+        submitButton.textContent = "Submit Request";
       }
     }
 
@@ -325,54 +332,54 @@
       e.preventDefault();
 
       const formData = new FormData(form);
-      const email = formData.get('email');
-      const name = formData.get('name');
+      const email = formData.get("email");
+      const name = formData.get("name");
 
       if (!email || !name) {
-        alert('Please fill in your name and email in Step 1 first.');
+        alert("Please fill in your name and email in Step 1 first.");
         return;
       }
 
       // Trigger consent modal
-      if (typeof window.triggerConsentModal === 'function') {
-        console.log('Triggering consent modal:', {
-          contentId: '960628',
-          baseURL: 'https://sandbox.gotrust.tech/universal',
+      if (typeof window.triggerConsentModal === "function") {
+        console.log("Triggering consent modal:", {
+          contentId: "403214",
+          baseURL: "https://sandbox.gotrust.tech/universal",
           additionalInfo: {
-            '163': email,
-            '8': name,
+            "163": email,
           },
         });
 
         window.triggerConsentModal(
           {
-            contentId: '960628',
-            baseURL: 'https://sandbox.gotrust.tech/universal',
+            contentId: "403214",
+            baseURL: "https://sandbox.gotrust.tech/universal",
             additionalInfo: {
-              '163': email,
-              '8': name,
+              "163": email
             },
           },
           {
             onSuccess: async (data) => {
-              console.log('Consent collected successfully', data);
+              console.log("Consent collected successfully", data);
               consentRecordId = data.response?.result?.recordId || null;
 
               // Submit form after successful consent
               await submitFormData(consentRecordId);
             },
             onError: (error) => {
-              console.error('Consent submission failed:', error);
-              alert('Failed to submit consent. Please try again.');
+              console.error("Consent submission failed:", error);
+              alert("Failed to submit consent. Please try again.");
             },
             onClose: () => {
-              console.log('User closed the consent modal without providing consent');
+              console.log(
+                "User closed the consent modal without providing consent",
+              );
             },
-          }
+          },
         );
       } else {
-        console.error('Consent widget not loaded');
-        alert('Consent widget is not available. Please refresh the page.');
+        console.error("Consent widget not loaded");
+        alert("Consent widget is not available. Please refresh the page.");
       }
     });
   });
@@ -380,82 +387,120 @@
 
 <script>
   // @ts-nocheck - Suppress TypeScript errors in this file
-  document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('multi-step-form') as HTMLFormElement;
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("multi-step-form") as HTMLFormElement;
     if (!form) return;
 
-    const steps = form.querySelectorAll('.form-step');
-    const nextButtons = form.querySelectorAll('.next-step');
-    const prevButtons = form.querySelectorAll('.prev-step');
-    const progressBars = document.querySelectorAll('.progress-bar');
-    const stepIndicators = document.querySelectorAll('.step-indicator [data-step]');
-    const resetButton = form.querySelector('.reset-form');
-    const successMessage = form.querySelector('.success-message');
+    const steps = form.querySelectorAll(".form-step");
+    const nextButtons = form.querySelectorAll(".next-step");
+    const prevButtons = form.querySelectorAll(".prev-step");
+    const progressBars = document.querySelectorAll(".progress-bar");
+    const stepIndicators = document.querySelectorAll(
+      ".step-indicator [data-step]",
+    );
+    const resetButton = form.querySelector(".reset-form");
+    const successMessage = form.querySelector(".success-message");
 
     // Budget options
-    const budgetOptions = form.querySelectorAll('.budget-option');
-    budgetOptions.forEach(option => {
+    const budgetOptions = form.querySelectorAll(".budget-option");
+    budgetOptions.forEach((option) => {
       const input = option.querySelector('input[type="radio"]');
-      input.addEventListener('change', () => {
-        budgetOptions.forEach(opt => {
-          opt.classList.remove('border-primary-500', 'bg-primary-50', 'dark:bg-primary-900/20');
-          opt.classList.add('border-gray-300', 'dark:border-gray-700');
+      input.addEventListener("change", () => {
+        budgetOptions.forEach((opt) => {
+          opt.classList.remove(
+            "border-primary-500",
+            "bg-primary-50",
+            "dark:bg-primary-900/20",
+          );
+          opt.classList.add("border-gray-300", "dark:border-gray-700");
         });
         if (input.checked) {
-          option.classList.remove('border-gray-300', 'dark:border-gray-700');
-          option.classList.add('border-primary-500', 'bg-primary-50', 'dark:bg-primary-900/20');
+          option.classList.remove("border-gray-300", "dark:border-gray-700");
+          option.classList.add(
+            "border-primary-500",
+            "bg-primary-50",
+            "dark:bg-primary-900/20",
+          );
         }
       });
     });
 
     // Contact method options
-    const contactOptions = form.querySelectorAll('.contact-option');
-    contactOptions.forEach(option => {
+    const contactOptions = form.querySelectorAll(".contact-option");
+    contactOptions.forEach((option) => {
       const input = option.querySelector('input[type="radio"]');
-      input.addEventListener('change', () => {
-        contactOptions.forEach(opt => {
-          opt.classList.remove('border-primary-500', 'bg-primary-50', 'dark:bg-primary-900/20');
-          opt.classList.add('border-gray-300', 'dark:border-gray-700');
+      input.addEventListener("change", () => {
+        contactOptions.forEach((opt) => {
+          opt.classList.remove(
+            "border-primary-500",
+            "bg-primary-50",
+            "dark:bg-primary-900/20",
+          );
+          opt.classList.add("border-gray-300", "dark:border-gray-700");
         });
         if (input.checked) {
-          option.classList.remove('border-gray-300', 'dark:border-gray-700');
-          option.classList.add('border-primary-500', 'bg-primary-50', 'dark:bg-primary-900/20');
+          option.classList.remove("border-gray-300", "dark:border-gray-700");
+          option.classList.add(
+            "border-primary-500",
+            "bg-primary-50",
+            "dark:bg-primary-900/20",
+          );
         }
       });
       // Set initial state for checked option
       if (input.checked) {
-        option.classList.remove('border-gray-300', 'dark:border-gray-700');
-        option.classList.add('border-primary-500', 'bg-primary-50', 'dark:bg-primary-900/20');
+        option.classList.remove("border-gray-300", "dark:border-gray-700");
+        option.classList.add(
+          "border-primary-500",
+          "bg-primary-50",
+          "dark:bg-primary-900/20",
+        );
       }
     });
 
     // Handle next button clicks
-    nextButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const currentStep = parseInt(button.closest('.form-step').dataset.step);
+    nextButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const currentStep = parseInt(button.closest(".form-step").dataset.step);
         const nextStep = parseInt(button.dataset.next);
 
         // Validate current step
         if (validateStep(currentStep)) {
           // Hide current step
-          steps.forEach(step => {
+          steps.forEach((step) => {
             if (parseInt(step.dataset.step) === currentStep) {
-              step.classList.add('animate-out', 'fade-out', 'slide-out-to-left-5');
+              step.classList.add(
+                "animate-out",
+                "fade-out",
+                "slide-out-to-left-5",
+              );
               setTimeout(() => {
-                step.classList.add('hidden');
-                step.classList.remove('animate-out', 'fade-out', 'slide-out-to-left-5');
+                step.classList.add("hidden");
+                step.classList.remove(
+                  "animate-out",
+                  "fade-out",
+                  "slide-out-to-left-5",
+                );
               }, 300);
             }
           });
 
           // Show next step
           setTimeout(() => {
-            steps.forEach(step => {
+            steps.forEach((step) => {
               if (parseInt(step.dataset.step) === nextStep) {
-                step.classList.remove('hidden');
-                step.classList.add('animate-in', 'fade-in', 'slide-in-from-right-5');
+                step.classList.remove("hidden");
+                step.classList.add(
+                  "animate-in",
+                  "fade-in",
+                  "slide-in-from-right-5",
+                );
                 setTimeout(() => {
-                  step.classList.remove('animate-in', 'fade-in', 'slide-in-from-right-5');
+                  step.classList.remove(
+                    "animate-in",
+                    "fade-in",
+                    "slide-in-from-right-5",
+                  );
                 }, 300);
               }
             });
@@ -468,30 +513,46 @@
     });
 
     // Handle previous button clicks
-    prevButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const currentStep = parseInt(button.closest('.form-step').dataset.step);
+    prevButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const currentStep = parseInt(button.closest(".form-step").dataset.step);
         const prevStep = parseInt(button.dataset.prev);
 
         // Hide current step
-        steps.forEach(step => {
+        steps.forEach((step) => {
           if (parseInt(step.dataset.step) === currentStep) {
-            step.classList.add('animate-out', 'fade-out', 'slide-out-to-right-5');
+            step.classList.add(
+              "animate-out",
+              "fade-out",
+              "slide-out-to-right-5",
+            );
             setTimeout(() => {
-              step.classList.add('hidden');
-              step.classList.remove('animate-out', 'fade-out', 'slide-out-to-right-5');
+              step.classList.add("hidden");
+              step.classList.remove(
+                "animate-out",
+                "fade-out",
+                "slide-out-to-right-5",
+              );
             }, 300);
           }
         });
 
         // Show previous step
         setTimeout(() => {
-          steps.forEach(step => {
+          steps.forEach((step) => {
             if (parseInt(step.dataset.step) === prevStep) {
-              step.classList.remove('hidden');
-              step.classList.add('animate-in', 'fade-in', 'slide-in-from-left-5');
+              step.classList.remove("hidden");
+              step.classList.add(
+                "animate-in",
+                "fade-in",
+                "slide-in-from-left-5",
+              );
               setTimeout(() => {
-                step.classList.remove('animate-in', 'fade-in', 'slide-in-from-left-5');
+                step.classList.remove(
+                  "animate-in",
+                  "fade-in",
+                  "slide-in-from-left-5",
+                );
               }, 300);
             }
           });
@@ -503,23 +564,23 @@
     });
 
     // Form submission
-    form.addEventListener('submit', (e) => {
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
 
       if (validateStep(3)) {
         // Hide the form steps
-        steps.forEach(step => {
-          step.classList.add('animate-out', 'fade-out');
+        steps.forEach((step) => {
+          step.classList.add("animate-out", "fade-out");
           setTimeout(() => {
-            step.classList.add('hidden');
-            step.classList.remove('animate-out', 'fade-out');
+            step.classList.add("hidden");
+            step.classList.remove("animate-out", "fade-out");
           }, 300);
         });
 
         // Show success message
         setTimeout(() => {
-          successMessage.classList.remove('hidden');
-          successMessage.classList.add('animate-in', 'fade-in', 'zoom-in');
+          successMessage.classList.remove("hidden");
+          successMessage.classList.add("animate-in", "fade-in", "zoom-in");
         }, 300);
 
         // Here you would typically send the form data to your backend
@@ -528,46 +589,58 @@
     });
 
     // Reset form
-    resetButton.addEventListener('click', () => {
+    resetButton.addEventListener("click", () => {
       form.reset();
 
       // Hide success message
-      successMessage.classList.add('animate-out', 'fade-out', 'zoom-out');
+      successMessage.classList.add("animate-out", "fade-out", "zoom-out");
       setTimeout(() => {
-        successMessage.classList.add('hidden');
-        successMessage.classList.remove('animate-out', 'fade-out', 'zoom-out');
+        successMessage.classList.add("hidden");
+        successMessage.classList.remove("animate-out", "fade-out", "zoom-out");
 
         // Reset progress
         updateProgress(1);
 
         // Show first step
-        steps.forEach(step => {
+        steps.forEach((step) => {
           if (parseInt(step.dataset.step) === 1) {
-            step.classList.remove('hidden');
-            step.classList.add('animate-in', 'fade-in');
+            step.classList.remove("hidden");
+            step.classList.add("animate-in", "fade-in");
             setTimeout(() => {
-              step.classList.remove('animate-in', 'fade-in');
+              step.classList.remove("animate-in", "fade-in");
             }, 300);
           } else {
-            step.classList.add('hidden');
+            step.classList.add("hidden");
           }
         });
 
         // Reset radio button styling
-        budgetOptions.forEach(opt => {
-          opt.classList.remove('border-primary-500', 'bg-primary-50', 'dark:bg-primary-900/20');
-          opt.classList.add('border-gray-300', 'dark:border-gray-700');
+        budgetOptions.forEach((opt) => {
+          opt.classList.remove(
+            "border-primary-500",
+            "bg-primary-50",
+            "dark:bg-primary-900/20",
+          );
+          opt.classList.add("border-gray-300", "dark:border-gray-700");
         });
 
-        contactOptions.forEach(opt => {
+        contactOptions.forEach((opt) => {
           const input = opt.querySelector('input[type="radio"]');
-          if (input.value === 'Email') {
-            opt.classList.remove('border-gray-300', 'dark:border-gray-700');
-            opt.classList.add('border-primary-500', 'bg-primary-50', 'dark:bg-primary-900/20');
+          if (input.value === "Email") {
+            opt.classList.remove("border-gray-300", "dark:border-gray-700");
+            opt.classList.add(
+              "border-primary-500",
+              "bg-primary-50",
+              "dark:bg-primary-900/20",
+            );
             input.checked = true;
           } else {
-            opt.classList.remove('border-primary-500', 'bg-primary-50', 'dark:bg-primary-900/20');
-            opt.classList.add('border-gray-300', 'dark:border-gray-700');
+            opt.classList.remove(
+              "border-primary-500",
+              "bg-primary-50",
+              "dark:bg-primary-900/20",
+            );
+            opt.classList.add("border-gray-300", "dark:border-gray-700");
           }
         });
       }, 300);
@@ -577,37 +650,54 @@
     function updateProgress(step) {
       // Update progress bars
       progressBars.forEach((bar, index) => {
-        if (index === 0) { // First progress bar
-          bar.style.width = step > 1 ? '100%' : '0%';
-        } else { // Second progress bar
-          bar.style.width = step > 2 ? '100%' : '0%';
+        if (index === 0) {
+          // First progress bar
+          bar.style.width = step > 1 ? "100%" : "0%";
+        } else {
+          // Second progress bar
+          bar.style.width = step > 2 ? "100%" : "0%";
         }
       });
 
       // Update step indicators
-      stepIndicators.forEach(indicator => {
+      stepIndicators.forEach((indicator) => {
         const indicatorStep = parseInt(indicator.dataset.step);
-        const stepNumber = indicator.querySelector('.step-number');
-        const stepCheck = indicator.querySelector('.step-check');
+        const stepNumber = indicator.querySelector(".step-number");
+        const stepCheck = indicator.querySelector(".step-check");
 
         if (indicatorStep < step) {
           // Completed step
-          indicator.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-500', 'dark:text-gray-400');
-          indicator.classList.add('bg-primary-500', 'text-white');
-          stepNumber.classList.add('hidden');
-          stepCheck.classList.remove('hidden');
+          indicator.classList.remove(
+            "bg-gray-200",
+            "dark:bg-gray-700",
+            "text-gray-500",
+            "dark:text-gray-400",
+          );
+          indicator.classList.add("bg-primary-500", "text-white");
+          stepNumber.classList.add("hidden");
+          stepCheck.classList.remove("hidden");
         } else if (indicatorStep === step) {
           // Current step
-          indicator.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-500', 'dark:text-gray-400');
-          indicator.classList.add('bg-primary-500', 'text-white');
-          stepNumber.classList.remove('hidden');
-          stepCheck.classList.add('hidden');
+          indicator.classList.remove(
+            "bg-gray-200",
+            "dark:bg-gray-700",
+            "text-gray-500",
+            "dark:text-gray-400",
+          );
+          indicator.classList.add("bg-primary-500", "text-white");
+          stepNumber.classList.remove("hidden");
+          stepCheck.classList.add("hidden");
         } else {
           // Future step
-          indicator.classList.remove('bg-primary-500', 'text-white');
-          indicator.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-500', 'dark:text-gray-400');
-          stepNumber.classList.remove('hidden');
-          stepCheck.classList.add('hidden');
+          indicator.classList.remove("bg-primary-500", "text-white");
+          indicator.classList.add(
+            "bg-gray-200",
+            "dark:bg-gray-700",
+            "text-gray-500",
+            "dark:text-gray-400",
+          );
+          stepNumber.classList.remove("hidden");
+          stepCheck.classList.add("hidden");
         }
       });
     }
@@ -618,37 +708,49 @@
       const currentStep = form.querySelector(`.form-step[data-step="${step}"]`);
 
       // Get all required inputs in the current step
-      const requiredInputs = currentStep.querySelectorAll('[required]');
+      const requiredInputs = currentStep.querySelectorAll("[required]");
 
-      requiredInputs.forEach(input => {
+      requiredInputs.forEach((input) => {
         const errorMessage = input.nextElementSibling;
 
         if (!input.value.trim()) {
           isValid = false;
-          input.classList.add('border-red-500');
-          if (errorMessage && errorMessage.classList.contains('error-message')) {
-            errorMessage.textContent = 'This field is required';
-            errorMessage.classList.remove('hidden');
+          input.classList.add("border-red-500");
+          if (
+            errorMessage &&
+            errorMessage.classList.contains("error-message")
+          ) {
+            errorMessage.textContent = "This field is required";
+            errorMessage.classList.remove("hidden");
           }
-        } else if (input.type === 'email' && !isValidEmail(input.value)) {
+        } else if (input.type === "email" && !isValidEmail(input.value)) {
           isValid = false;
-          input.classList.add('border-red-500');
-          if (errorMessage && errorMessage.classList.contains('error-message')) {
-            errorMessage.textContent = 'Please enter a valid email address';
-            errorMessage.classList.remove('hidden');
+          input.classList.add("border-red-500");
+          if (
+            errorMessage &&
+            errorMessage.classList.contains("error-message")
+          ) {
+            errorMessage.textContent = "Please enter a valid email address";
+            errorMessage.classList.remove("hidden");
           }
         } else {
-          input.classList.remove('border-red-500');
-          if (errorMessage && errorMessage.classList.contains('error-message')) {
-            errorMessage.classList.add('hidden');
+          input.classList.remove("border-red-500");
+          if (
+            errorMessage &&
+            errorMessage.classList.contains("error-message")
+          ) {
+            errorMessage.classList.add("hidden");
           }
         }
 
         // Add input event listener to clear error when user types
-        input.addEventListener('input', () => {
-          input.classList.remove('border-red-500');
-          if (errorMessage && errorMessage.classList.contains('error-message')) {
-            errorMessage.classList.add('hidden');
+        input.addEventListener("input", () => {
+          input.classList.remove("border-red-500");
+          if (
+            errorMessage &&
+            errorMessage.classList.contains("error-message")
+          ) {
+            errorMessage.classList.add("hidden");
           }
         });
       });
