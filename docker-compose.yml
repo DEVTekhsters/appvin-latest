@@ -3,6 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        PUBLIC_API_URL: "https://api.appvintech.com"
     container_name: appvin-latest
     ports:
       - "127.0.0.1:4444:80"
