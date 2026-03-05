@@ -36,8 +36,12 @@ const {
 <html lang="en" class="overflow-x-hidden smooth-scroll light">
   <head>
     <!-- Include the Cookie Banner Bundle from S3 -->
-    <script src="https://d1axzsitviir9s.cloudfront.net/gotrust-consent-shim.v1.0.0.min.js" data-safe="true"></script>
-    <script src="https://d1axzsitviir9s.cloudfront.net/cookie-banner.bundle.js" data-safe="true"></script>
+    <script
+      src="https://d1axzsitviir9s.cloudfront.net/gotrust-consent-shim.v1.0.0.min.js"
+      data-safe="true"></script>
+    <script
+      src="https://d1axzsitviir9s.cloudfront.net/cookie-banner.bundle.js"
+      data-safe="true"></script>
 
     <link rel="icon" type="image/png" href="/images/appvin-icon.png" />
     <SEO
@@ -54,16 +58,22 @@ const {
       twitterImage={twitterImage}
     />
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WZX9S8DXH7"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WZX9S8DXH7"
+    ></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'G-WZX9S8DXH7');
+      gtag("config", "G-WZX9S8DXH7");
     </script>
 
-    <meta name="google-site-verification" content="jVG-vyPSYEKrzfwSP1rmMl6r97lLuedSra31SfaBgdw" />
+    <meta
+      name="google-site-verification"
+      content="jVG-vyPSYEKrzfwSP1rmMl6r97lLuedSra31SfaBgdw"
+    />
 
     <slot name="head" />
     <script is:inline>
@@ -108,10 +118,24 @@ const {
         }
       });
     </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-66Q06BECSK"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-66Q06BECSK");
+    </script>
   </head>
   <body class="overflow-x-hidden w-full no-scrollbar smooth-scroll">
     <!-- Consent Widget Script -->
-    <script src="https://gotrust-third-party-service.s3.ap-south-1.amazonaws.com/consent-widget.js" content-id="403214" base-url="https://sandbox.gotrust.tech/universal"></script>
+    <script
+      src="https://gotrust-third-party-service.s3.ap-south-1.amazonaws.com/consent-widget.js"
+      content-id="403214"
+      base-url="https://sandbox.gotrust.tech/universal"></script>
     <div class="overflow-x-hidden w-full no-scrollbar smooth-scroll">
       <slot />
     </div>
