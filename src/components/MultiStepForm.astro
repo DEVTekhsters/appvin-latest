@@ -344,7 +344,7 @@ const PUBLIC_API_URL = import.meta.env.PUBLIC_API_URL ?? "";
       if (typeof window.triggerConsentModal === "function") {
         console.log("Triggering consent modal:", {
           contentId: "403214",
-          baseURL: "https://sandbox.gotrust.tech/universal",
+          environment: "https://sandbox.gotrust.tech/universal",
           additionalInfo: {
             "163": email,
           },
@@ -353,9 +353,10 @@ const PUBLIC_API_URL = import.meta.env.PUBLIC_API_URL ?? "";
         window.triggerConsentModal(
           {
             contentId: "403214",
-            baseURL: "https://sandbox.gotrust.tech/universal",
+            environment: "https://sandbox.gotrust.tech/universal",
             additionalInfo: {
-              "163": email
+              "163": email,
+              "8": name
             },
           },
           {
