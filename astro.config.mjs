@@ -20,5 +20,8 @@ export default defineConfig({
       theme: 'dracula',
       wrap: true
     }
+  },
+  server: {
+    port: 3000
   }
 });
