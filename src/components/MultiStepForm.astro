@@ -502,6 +502,7 @@ const PUBLIC_API_URL = import.meta.env.PUBLIC_API_URL ?? "";
         );
       } else {
         console.error("Consent widget not loaded");
+        console.log("consent type", typeof window.triggerConsentModal);
         alert("Consent widget is not available. Please refresh the page.");
       }
     });
