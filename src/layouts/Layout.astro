@@ -37,6 +37,7 @@ const {
   <head>
     <!-- Include the Cookie Banner Bundle from S3 -->
     <script
+      is:inline
       src="https://d1axzsitviir9s.cloudfront.net/gotrust-consent-shim.v1.0.0.min.js"
       data-safe="true"></script>
     <script
@@ -134,7 +135,7 @@ const {
     <!-- Consent Widget Script -->
     <script
       is:inline
-      src="https://ydt-aws-bucket.s3.ap-south-1.amazonaws.com/consent-widget.js"
+      src="https://gotrust-third-party-service.s3.ap-south-1.amazonaws.com/consent-widget.js"
       {...{
         "content-id": "403214",
         environment: "https://sandbox.gotrust.tech/universal",
