@@ -474,11 +474,11 @@ const PUBLIC_API_URL = import.meta.env.PUBLIC_API_URL ?? "";
 
         window.triggerConsentModal(
           {
-            contentId: "403214",
-            environment: "https://sandbox.gotrust.tech/universal",
+            contentId: "760987",
+            environment: "https://portal.gotrust.tech/universal",
             additionalInfo: {
-              "163": email,
-              "8": name,
+              "4775": email,
+              "4770": name,
             },
           },
           {
@@ -491,12 +491,16 @@ const PUBLIC_API_URL = import.meta.env.PUBLIC_API_URL ?? "";
             },
             onError: (error) => {
               console.error("Consent submission failed:", error);
+              submitButton.disabled = false;
+              submitButton.textContent = "Submit Request";
               alert("Failed to submit consent. Please try again.");
             },
             onClose: () => {
               console.log(
                 "User closed the consent modal without providing consent",
               );
+              submitButton.disabled = false;
+              submitButton.textContent = "Submit Request";
             },
           },
         );
