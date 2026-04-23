@@ -31,7 +31,7 @@ export default defineConfig({
     '/sap-integration-service': '/services/sap-integration',
     '/career': '/careers',
     '/about-us': '/about',
-    '/legal/lp': '/',
+    '/legal/ip': '/',
     '/help/article/5307': '/blog',
     '/feature/osu_main/index.html': '/services',
     '/api/contact': '/contact',
