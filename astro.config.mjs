@@ -37,7 +37,7 @@ export default defineConfig({
     '/api/contact': '/contact',
     '/api/newsletter': '/resources/newsletters',
     '/legal/privacy': '/docs',
-    '/benifits-of-automotive-mobile-apps': '/resources/newsletters/innovating-businesses-with-ai-sapintegration--mobile-solutions/',
+    '/benefits-of-automotive-mobile-apps/': '/resources/newsletters/innovating-businesses-with-ai-sapintegration--mobile-solutions/',
     '/services/cloud-solutions': '/services',
     '/our-projects-go-trust': '/case-studies/go-trust',
     '/events': '/resources/webinars'
