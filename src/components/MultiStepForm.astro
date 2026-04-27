@@ -463,22 +463,25 @@ const PUBLIC_API_URL = import.meta.env.PUBLIC_API_URL ?? "";
 
       // Trigger consent modal
       if (typeof window.triggerConsentModal === "function") {
+        const uuid = crypto.randomUUID();
         console.log("Triggering consent modal:", {
-          contentId: "403214",
-          environment: "https://sandbox.gotrust.tech/universal",
+          contentId: "57684",
+          environment: "https://portal.gotrust.tech/universal",
           additionalInfo: {
-            "163": email,
-            "8": name,
+            "4775": email,
+            "4770": name,
+            "5765": uuid,
           },
         });
 
         window.triggerConsentModal(
           {
-            contentId: "760987",
+            contentId: "57684",
             environment: "https://portal.gotrust.tech/universal",
             additionalInfo: {
               "4775": email,
               "4770": name,
+              "5765": uuid,
             },
           },
           {
