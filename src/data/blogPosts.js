@@ -1,27 +1,92 @@
 // Blog posts based on AppVin Technologies blog content
 export const allCategories = [
-  'Digital Transformation',
-  'Innovation',
-  'AI',
-  'Architecture',
-  'Cloud Computing',
-  'Product Engineering',
-  'UX Design',
-  'Compliance',
-  'Data Governance'
+  "Digital Transformation",
+  "Innovation",
+  "AI",
+  "Architecture",
+  "Cloud Computing",
+  "Product Engineering",
+  "UX Design",
+  "Compliance",
+  "Data Governance",
 ];
 
 export const blogPosts = [
   {
-    title: 'Digital Transformation Strategy: A Roadmap for Success',
-    slug: 'digital-transformation-strategy-roadmap',
-    excerpt: 'Develop a comprehensive digital transformation strategy that aligns technology initiatives with business objectives for sustainable growth.',
-    publishDate: '2023-05-25',
-    author: 'Emily Rodriguez',
-    image: '/images/blog/digital-transformation/digital-transformation-strategy.jpg',
-    alt: 'Digital transformation strategy illustration',
-    tags: ['Digital Transformation', 'Strategy', 'Innovation'],
-    category: 'Digital Transformation',
+    title:
+      "Most AI Agent Projects Will Fail in the Next 12 Months. Here's the One Question That Predicts Which Ones Won't.",
+    slug: "most-ai-agent-projects-will-fail-in-the-next-12-months",
+    excerpt:
+      "Develop a comprehensive digital transformation strategy that aligns technology initiatives with business objectives for sustainable growth.",
+    publishDate: "2026-07-10",
+    author: "Appvin Team",
+    image:
+      "/images/blog/innovation/most-ai-agents-wont-work.png",
+    alt: "Digital transformation strategy illustration",
+    tags: ["Digital Transformation", "Strategy", "Innovation"],
+    category: "Digital Transformation",
+    content: `
+ 
+<p>Gartner puts a number on it: over 40% of agentic AI projects will be cancelled before 2027. Not because the models weren't good enough. Not because the budget ran out. In almost every case, it comes down to one question that nobody asks during the kickoff meeting.</p>
+ 
+<h3>What is this agent actually allowed to decide—and what happens the moment it's wrong?</h3>
+ 
+<p>If a team can't answer that in one sentence, the project is already in trouble. It just doesn't know it yet.</p>
+ 
+<h2>The Pattern Behind Every Stalled Pilot</h2>
+ 
+<p>Here's what actually happens, over and over.</p>
+ 
+<p>A company sees a competitor announce, <em>"We now have AI agents."</em> Leadership feels the pressure, a pilot gets approved within days, and a polished demo is ready a few months later. The AI answers questions, drafts responses, and appears remarkably capable.</p>
+ 
+<p>Then the system is introduced to a real customer, a real transaction, or real money—and someone finally asks, <strong>"Who signs off if this is wrong?"</strong></p>
+ 
+<p>Nobody has an answer. The project quietly stalls—not because of a technology failure, but because governance was never designed into the system from the beginning.</p>
+ 
+<p>Deloitte's 2026 Enterprise AI Survey reinforces this challenge, revealing that only <strong>21% of organizations</strong> have a mature governance model for agentic AI, even as enterprise adoption continues to accelerate.</p>
+ 
+<h2>What Separates Successful AI Deployments</h2>
+ 
+<p>The organizations that succeed answer the <strong>decision authority</strong> question before writing a single line of code. They clearly define what an AI agent can decide independently and when human intervention is required.</p>
+ 
+<h3>Moove: Governance Before Automation</h3>
+ 
+<p>For Moove, an AI-powered fleet platform was designed to make operational decisions such as identifying maintenance issues and recommending route adjustments using live telematics data. Success came from clearly defining the system's authority before development began. The outcome was a <strong>28% reduction in fuel consumption</strong> and a <strong>45% improvement in driver safety scores</strong>—not because the AI was more intelligent, but because its decision boundaries were clearly established.</p>
+ 
+<h3>KFC: Defining Local Decision Authority</h3>
+ 
+<p>During KFC's digital ordering rollout across seven countries, success did not come from giving AI unrestricted control. Instead, every market clearly identified which decisions could be automated and which required local business judgment. This governance-first approach helped reduce aggregator dependency by <strong>70%</strong>.</p>
+ 
+<h2>Why Governance Comes First</h2>
+ 
+<p>Governance isn't an afterthought or a compliance exercise. It is the design constraint that determines whether an AI agent can safely operate within an enterprise.</p>
+ 
+<p>Without governance, organizations build demonstrations that impress stakeholders but fail in production when unexpected scenarios arise. With governance embedded from the beginning, AI agents become reliable systems that employees trust and legal teams don't have to explain after an incident.</p>
+ 
+<h2>The One-Sentence Test</h2>
+ 
+<p>Before approving your next AI agent initiative, ask one simple question:</p>
+ 
+<blockquote>
+<p><strong>"Here's exactly what this agent can decide on its own, and here's exactly what happens when it gets it wrong."</strong></p>
+</blockquote>
+ 
+<p>If the room goes silent, you've identified the real project. The priority isn't building the AI agent it's defining its governance framework first.</p>
+ 
+<p>That's where successful enterprise AI initiatives begin, and it's the difference between joining the 40% of cancelled projects or becoming one of the organizations that successfully scale AI with confidence.</p>`,
+  },
+  {
+    title: "Digital Transformation Strategy: A Roadmap for Success",
+    slug: "digital-transformation-strategy-roadmap",
+    excerpt:
+      "Develop a comprehensive digital transformation strategy that aligns technology initiatives with business objectives for sustainable growth.",
+    publishDate: "2023-05-25",
+    author: "Emily Rodriguez",
+    image:
+      "/images/blog/digital-transformation/digital-transformation-strategy.jpg",
+    alt: "Digital transformation strategy illustration",
+    tags: ["Digital Transformation", "Strategy", "Innovation"],
+    category: "Digital Transformation",
     content: `
       <h2>Navigating the Digital Transformation Journey</h2>
       <p>Digital transformation is more than implementing new technologies—it's a fundamental reimagining of how an organization delivers value to customers, employees, and stakeholders through digital capabilities. A successful transformation requires a clear strategy that balances innovation with practical execution.</p>
@@ -75,18 +140,20 @@ export const blogPosts = [
 
       <h2>Conclusion</h2>
       <p>Digital transformation is a complex, ongoing journey rather than a one-time project. By developing a comprehensive strategy and roadmap, organizations can navigate this journey successfully, creating sustainable competitive advantage in an increasingly digital world. The most successful transformations combine technological innovation with organizational change, always keeping customer value at the center of the effort.</p>
-    `
+    `,
   },
   {
-    title: 'Fostering a Culture of Innovation: Strategies for Forward-Thinking Organizations',
-    slug: 'fostering-culture-of-innovation',
-    excerpt: 'Learn how to build an organizational culture that consistently generates innovative ideas and turns them into market-leading solutions.',
-    publishDate: '2023-05-22',
-    author: 'Thomas Wright',
-    image: '/images/blog/innovation/innovation-strategy.jpg',
-    alt: 'Innovation strategy illustration',
-    tags: ['Innovation', 'Leadership', 'Organizational Culture'],
-    category: 'Innovation',
+    title:
+      "Fostering a Culture of Innovation: Strategies for Forward-Thinking Organizations",
+    slug: "fostering-culture-of-innovation",
+    excerpt:
+      "Learn how to build an organizational culture that consistently generates innovative ideas and turns them into market-leading solutions.",
+    publishDate: "2023-05-22",
+    author: "Thomas Wright",
+    image: "/images/blog/innovation/innovation-strategy.jpg",
+    alt: "Innovation strategy illustration",
+    tags: ["Innovation", "Leadership", "Organizational Culture"],
+    category: "Innovation",
     content: `
       <h2>The Innovation Imperative</h2>
       <p>In today's rapidly evolving business landscape, innovation is no longer optional—it's essential for survival and growth. Organizations that consistently innovate can adapt to changing market conditions, meet evolving customer needs, and create sustainable competitive advantages.</p>
@@ -178,18 +245,19 @@ export const blogPosts = [
 
       <h2>Conclusion</h2>
       <p>Building an innovation culture is a journey, not a destination. It requires sustained commitment, deliberate practice, and continuous refinement. By creating the right conditions for innovation to flourish, organizations can develop the adaptive capacity needed to thrive in an increasingly complex and uncertain business environment. The most innovative organizations don't just produce occasional breakthroughs—they make innovation a way of life.</p>
-    `
+    `,
   },
   {
-    title: 'Leveraging AI for Business Process Automation',
-    slug: 'leveraging-ai-for-business-process-automation',
-    excerpt: 'Discover how artificial intelligence can streamline operations, reduce costs, and improve efficiency through intelligent automation.',
-    publishDate: '2023-05-18',
-    author: 'Michael Chen',
-    image: '/images/blog/ai/ai-automation.jpg',
-    alt: 'AI automation illustration',
-    tags: ['AI', 'Automation', 'Digital Transformation'],
-    category: 'AI',
+    title: "Leveraging AI for Business Process Automation",
+    slug: "leveraging-ai-for-business-process-automation",
+    excerpt:
+      "Discover how artificial intelligence can streamline operations, reduce costs, and improve efficiency through intelligent automation.",
+    publishDate: "2023-05-18",
+    author: "Michael Chen",
+    image: "/images/blog/ai/ai-automation.jpg",
+    alt: "AI automation illustration",
+    tags: ["AI", "Automation", "Digital Transformation"],
+    category: "AI",
     content: `
       <h2>The Evolution of Business Process Automation with AI</h2>
       <p>Artificial Intelligence is revolutionizing how businesses approach automation, moving beyond simple rule-based systems to intelligent solutions that can learn, adapt, and make decisions with minimal human intervention.</p>
@@ -241,18 +309,19 @@ export const blogPosts = [
 
       <h2>Conclusion</h2>
       <p>AI-powered automation represents a significant opportunity for businesses to improve efficiency, reduce costs, and deliver better customer experiences. By starting with well-defined use cases and following implementation best practices, organizations can successfully navigate the transition to more intelligent operational processes.</p>
-    `
+    `,
   },
   {
-    title: 'Microservices Architecture: Benefits and Implementation Challenges',
-    slug: 'microservices-architecture-benefits-challenges',
-    excerpt: 'Explore the advantages of microservices architecture for modern applications and strategies to overcome common implementation hurdles.',
-    publishDate: '2023-05-10',
-    author: 'David Rodriguez',
-    image: '/images/blog/architecture/microservices.jpg',
-    alt: 'Microservices architecture illustration',
-    tags: ['Architecture', 'Microservices', 'Cloud'],
-    category: 'Architecture',
+    title: "Microservices Architecture: Benefits and Implementation Challenges",
+    slug: "microservices-architecture-benefits-challenges",
+    excerpt:
+      "Explore the advantages of microservices architecture for modern applications and strategies to overcome common implementation hurdles.",
+    publishDate: "2023-05-10",
+    author: "David Rodriguez",
+    image: "/images/blog/architecture/microservices.jpg",
+    alt: "Microservices architecture illustration",
+    tags: ["Architecture", "Microservices", "Cloud"],
+    category: "Architecture",
     content: `
       <h2>Understanding Microservices Architecture</h2>
       <p>Microservices architecture has emerged as a dominant approach for building complex, scalable applications. Unlike monolithic applications where all functionality exists in a single codebase, microservices break applications into small, independent services that communicate through well-defined APIs.</p>
@@ -311,17 +380,18 @@ export const blogPosts = [
 
       <h2>Conclusion</h2>
       <p>Microservices architecture offers significant benefits for modern application development, but it's not without challenges. By understanding both the advantages and potential pitfalls, organizations can make informed decisions about whether and how to adopt this architectural style. For many complex applications with evolving requirements, the benefits of microservices will outweigh the implementation challenges when approached with proper planning and expertise.</p>
-    `
+    `,
   },
   {
-    title: 'Building Scalable Cloud Solutions for Modern Businesses',
-    slug: 'building-scalable-cloud-solutions',
-    excerpt: 'Learn the best practices for designing and implementing cloud solutions that can grow with your business needs.',
-    publishDate: '2023-03-28',
-    author: 'Maria Garcia',
-    image: '/images/blog/cloud-computing/cloud-migration.jpg',
-    tags: ['Cloud', 'Scalability', 'Architecture'],
-    category: 'Cloud Computing',
+    title: "Building Scalable Cloud Solutions for Modern Businesses",
+    slug: "building-scalable-cloud-solutions",
+    excerpt:
+      "Learn the best practices for designing and implementing cloud solutions that can grow with your business needs.",
+    publishDate: "2023-03-28",
+    author: "Maria Garcia",
+    image: "/images/blog/cloud-computing/cloud-migration.jpg",
+    tags: ["Cloud", "Scalability", "Architecture"],
+    category: "Cloud Computing",
     content: `
       <h2>The Importance of Scalability in Cloud Architecture</h2>
       <p>In today's rapidly evolving digital landscape, businesses need cloud solutions that can adapt and grow with changing demands. Scalability is no longer a luxury—it's a necessity for survival and competitive advantage.</p>
@@ -344,17 +414,19 @@ export const blogPosts = [
 
       <h3>3. Optimize Database Performance</h3>
       <p>Databases often become bottlenecks in scalable systems. Consider strategies like sharding, read replicas, and choosing the right database type (relational vs. NoSQL) for your specific needs.</p>
-    `
+    `,
   },
   {
-    title: 'The Future of AI in Product Engineering',
-    slug: 'future-of-ai-in-product-engineering',
-    excerpt: 'Explore how artificial intelligence is transforming the product engineering landscape, driving innovation, sustainability, and responsible development.',
-    publishDate: '2023-04-15',
-    author: 'Alex Johnson',
-    image: '/images/blog/product-engineering/product-engineering-best-practices.jpg',
-    tags: ['AI', 'Product Engineering', 'Innovation'],
-    category: 'Product Engineering',
+    title: "The Future of AI in Product Engineering",
+    slug: "future-of-ai-in-product-engineering",
+    excerpt:
+      "Explore how artificial intelligence is transforming the product engineering landscape, driving innovation, sustainability, and responsible development.",
+    publishDate: "2023-04-15",
+    author: "Alex Johnson",
+    image:
+      "/images/blog/product-engineering/product-engineering-best-practices.jpg",
+    tags: ["AI", "Product Engineering", "Innovation"],
+    category: "Product Engineering",
     content: `
       <h2>How AI is Reshaping Product Engineering</h2>
       <p>Artificial intelligence is redefining the boundaries of product engineering by enabling smarter design, improving efficiency, and enhancing decision-making across the product lifecycle. As AI becomes more integrated, businesses must adapt to remain competitive.</p>
@@ -388,17 +460,18 @@ export const blogPosts = [
 
       <h2>Conclusion</h2>
       <p>AI is a catalyst for innovation in product engineering, offering new possibilities for design, development, and sustainability. Organizations that prioritize ethical integration and human-centered design will not only stay ahead—they'll redefine what’s possible.</p>
-    `
+    `,
   },
   {
-    title: 'The Role of UX Design in Digital Transformation',
-    slug: 'role-of-ux-design-in-digital-transformation',
-    excerpt: 'Discover how user experience design plays a crucial role in successful digital transformation initiatives.',
-    publishDate: '2023-03-10',
-    author: 'James Wilson',
-    image: '/images/blog/ux/ux-design-1.jpg',
-    tags: ['UX Design', 'Digital Transformation', 'User Experience'],
-    category: 'UX Design',
+    title: "The Role of UX Design in Digital Transformation",
+    slug: "role-of-ux-design-in-digital-transformation",
+    excerpt:
+      "Discover how user experience design plays a crucial role in successful digital transformation initiatives.",
+    publishDate: "2023-03-10",
+    author: "James Wilson",
+    image: "/images/blog/ux/ux-design-1.jpg",
+    tags: ["UX Design", "Digital Transformation", "User Experience"],
+    category: "UX Design",
     content: `
       <h2>UX Design: The Heart of Digital Transformation</h2>
       <p>Digital transformation is not just about implementing new technologies—it's about reimagining how businesses operate and deliver value to customers. At the center of this transformation is user experience (UX) design, which ensures that digital solutions are not only functional but also intuitive, engaging, and aligned with user needs.</p>
@@ -423,17 +496,18 @@ export const blogPosts = [
 
       <h3>3. Accessibility and Inclusivity</h3>
       <p>Digital solutions should be accessible to all users, including those with disabilities. Inclusive design not only broadens your user base but also often leads to better experiences for everyone.</p>
-    `
+    `,
   },
   {
-    title: 'Regulatory Compliance in the Digital Age: A Comprehensive Guide',
-    slug: 'regulatory-compliance-digital-age',
-    excerpt: 'Navigate the complex landscape of regulatory compliance with strategies for maintaining adherence while driving innovation.',
-    publishDate: '2023-04-05',
-    author: 'Jennifer Martinez',
-    image: '/images/blog/compliance/regulatory-compliance.jpg',
-    tags: ['Compliance', 'Security', 'Risk Management'],
-    category: 'Compliance',
+    title: "Regulatory Compliance in the Digital Age: A Comprehensive Guide",
+    slug: "regulatory-compliance-digital-age",
+    excerpt:
+      "Navigate the complex landscape of regulatory compliance with strategies for maintaining adherence while driving innovation.",
+    publishDate: "2023-04-05",
+    author: "Jennifer Martinez",
+    image: "/images/blog/compliance/regulatory-compliance.jpg",
+    tags: ["Compliance", "Security", "Risk Management"],
+    category: "Compliance",
     content: `
       <h2>The Evolving Compliance Landscape</h2>
       <p>Regulatory compliance has become increasingly complex as digital transformation accelerates and global regulations multiply. Organizations must navigate a maze of requirements while maintaining agility and innovation.</p>
@@ -495,17 +569,18 @@ export const blogPosts = [
 
       <h2>Conclusion</h2>
       <p>Regulatory compliance in the digital age requires a strategic, integrated approach that balances risk management with business enablement. By embedding compliance considerations into business processes and leveraging technology effectively, organizations can turn compliance from a burden into a competitive advantage that builds trust with customers, partners, and regulators.</p>
-    `
+    `,
   },
   {
-    title: 'Advanced Data Governance: Beyond Basic Compliance',
-    slug: 'advanced-data-governance-beyond-compliance',
-    excerpt: 'Elevate your data governance strategy from a compliance necessity to a strategic business asset that drives value and innovation.',
-    publishDate: '2023-04-20',
-    author: 'Robert Chang',
-    image: '/images/blog/data/data-governance-advanced.jpg',
-    tags: ['Data Governance', 'Data Strategy', 'Analytics'],
-    category: 'Data Governance',
+    title: "Advanced Data Governance: Beyond Basic Compliance",
+    slug: "advanced-data-governance-beyond-compliance",
+    excerpt:
+      "Elevate your data governance strategy from a compliance necessity to a strategic business asset that drives value and innovation.",
+    publishDate: "2023-04-20",
+    author: "Robert Chang",
+    image: "/images/blog/data/data-governance-advanced.jpg",
+    tags: ["Data Governance", "Data Strategy", "Analytics"],
+    category: "Data Governance",
     content: `
       <h2>Evolving Data Governance for Strategic Advantage</h2>
       <p>Data governance has traditionally been viewed as a defensive measure—a way to manage risk and ensure compliance. However, forward-thinking organizations are now recognizing that robust data governance can be a powerful enabler of business value and innovation.</p>
@@ -563,16 +638,18 @@ export const blogPosts = [
 
       <h2>Conclusion</h2>
       <p>Advanced data governance goes beyond basic compliance to create a strategic asset that drives business value. By evolving your governance approach to focus on enablement rather than just control, you can unlock the full potential of your data while managing risks appropriately. The organizations that master this balance will have a significant competitive advantage in the data-driven economy.</p>
-    `
+    `,
   },
   {
-    title: 'Horizontal vs. Vertical Scaling: Choosing the Right Approach for Your Application',
-    slug: 'horizontal-vs-vertical-scaling',
-    excerpt: 'Compare horizontal and vertical scaling strategies to determine the optimal approach for your application\'s performance, cost, and reliability needs.',
-    publishDate: '2023-03-15',
-    author: 'Jason Kim',
-    image: '/images/blog/scalability/horizontal-scaling.jpg',
-    tags: ['Scalability', 'Architecture', 'Cloud'],
+    title:
+      "Horizontal vs. Vertical Scaling: Choosing the Right Approach for Your Application",
+    slug: "horizontal-vs-vertical-scaling",
+    excerpt:
+      "Compare horizontal and vertical scaling strategies to determine the optimal approach for your application's performance, cost, and reliability needs.",
+    publishDate: "2023-03-15",
+    author: "Jason Kim",
+    image: "/images/blog/scalability/horizontal-scaling.jpg",
+    tags: ["Scalability", "Architecture", "Cloud"],
     content: `
       <h2>Understanding Scaling Approaches</h2>
       <p>As applications grow in usage and complexity, choosing the right scaling strategy becomes critical for maintaining performance, reliability, and cost-effectiveness. The two primary approaches—horizontal and vertical scaling—offer different advantages and trade-offs that must be carefully considered.</p>
@@ -673,16 +750,17 @@ export const blogPosts = [
 
       <h2>Conclusion</h2>
       <p>The choice between horizontal and vertical scaling isn't binary—most sophisticated systems use elements of both approaches. By understanding the trade-offs and aligning your scaling strategy with your application's specific requirements, you can build systems that deliver optimal performance, reliability, and cost-effectiveness as your user base and workload grow. The key is to design with scalability in mind from the beginning and continuously evaluate your approach as requirements evolve.</p>
-    `
+    `,
   },
   {
-    title: 'Cybersecurity Best Practices for Modern Enterprises',
-    slug: 'cybersecurity-best-practices-modern-enterprises',
-    excerpt: 'Protect your organization from evolving cyber threats with comprehensive security strategies that balance protection with business enablement.',
-    publishDate: '2023-03-05',
-    author: 'Sophia Williams',
-    image: '/images/blog/security/cybersecurity-best-practices.jpg',
-    tags: ['Security', 'Cybersecurity', 'Risk Management'],
+    title: "Cybersecurity Best Practices for Modern Enterprises",
+    slug: "cybersecurity-best-practices-modern-enterprises",
+    excerpt:
+      "Protect your organization from evolving cyber threats with comprehensive security strategies that balance protection with business enablement.",
+    publishDate: "2023-03-05",
+    author: "Sophia Williams",
+    image: "/images/blog/security/cybersecurity-best-practices.jpg",
+    tags: ["Security", "Cybersecurity", "Risk Management"],
     content: `
       <h2>The Evolving Threat Landscape</h2>
       <p>Today's cybersecurity challenges are more complex and dangerous than ever before. Organizations face sophisticated threats from nation-states, criminal organizations, hacktivists, and insiders. A comprehensive security strategy must address this diverse threat landscape while enabling business innovation and growth.</p>
@@ -795,16 +873,17 @@ export const blogPosts = [
 
       <h2>Conclusion</h2>
       <p>Effective cybersecurity in today's threat landscape requires a comprehensive, risk-based approach that combines technical controls, operational excellence, and a security-conscious culture. By implementing these best practices and continuously adapting to emerging threats, organizations can protect their critical assets while enabling business innovation and growth. Remember that security is a journey, not a destination—continuous improvement and adaptation are essential for long-term success.</p>
-    `
+    `,
   },
   {
-    title: 'UX Design Principles for Creating Exceptional Digital Experiences',
-    slug: 'ux-design-principles-exceptional-digital-experiences',
-    excerpt: 'Master the fundamental principles of user experience design to create intuitive, engaging, and effective digital products.',
-    publishDate: '2023-02-28',
-    author: 'Rachel Torres',
-    image: '/images/blog/user-experience/user-centered-design.jpg',
-    tags: ['UX Design', 'User Experience', 'Design Thinking'],
+    title: "UX Design Principles for Creating Exceptional Digital Experiences",
+    slug: "ux-design-principles-exceptional-digital-experiences",
+    excerpt:
+      "Master the fundamental principles of user experience design to create intuitive, engaging, and effective digital products.",
+    publishDate: "2023-02-28",
+    author: "Rachel Torres",
+    image: "/images/blog/user-experience/user-centered-design.jpg",
+    tags: ["UX Design", "User Experience", "Design Thinking"],
     content: `
       <h2>The Foundation of Exceptional User Experiences</h2>
       <p>User experience (UX) design has evolved from a nice-to-have to a critical competitive differentiator. In today's digital landscape, users expect intuitive, seamless, and delightful experiences across all touchpoints. Understanding and applying core UX principles is essential for creating products that not only meet user needs but exceed their expectations.</p>
@@ -929,16 +1008,17 @@ export const blogPosts = [
 
       <h2>Conclusion</h2>
       <p>Creating exceptional user experiences requires a thoughtful, systematic approach grounded in a deep understanding of users and solid design principles. By following a user-centered design process and continuously measuring and refining your work, you can create digital products that not only meet functional requirements but also delight users and drive business success. Remember that great UX is never "finished"—it's an ongoing commitment to understanding and serving your users' evolving needs.</p>
-    `
+    `,
   },
   {
-    title: 'Implementing Effective Data Governance Strategies',
-    slug: 'implementing-effective-data-governance-strategies',
-    excerpt: 'Learn how to establish robust data governance frameworks that ensure data quality, security, and compliance.',
-    publishDate: '2023-02-22',
-    author: 'Sarah Chen',
-    image: '/images/blog/data/data-analytics-1.jpg',
-    tags: ['Data Governance', 'Compliance', 'Security'],
+    title: "Implementing Effective Data Governance Strategies",
+    slug: "implementing-effective-data-governance-strategies",
+    excerpt:
+      "Learn how to establish robust data governance frameworks that ensure data quality, security, and compliance.",
+    publishDate: "2023-02-22",
+    author: "Sarah Chen",
+    image: "/images/blog/data/data-analytics-1.jpg",
+    tags: ["Data Governance", "Compliance", "Security"],
     content: `
       <h2>The Critical Importance of Data Governance</h2>
       <p>In today's data-driven business environment, effective data governance has become a strategic imperative. Organizations that implement robust data governance frameworks gain competitive advantages through improved decision-making, enhanced compliance, and greater operational efficiency.</p>
@@ -1007,9 +1087,11 @@ export const blogPosts = [
       <p>Legacy systems may not support modern governance requirements. Develop a technology roadmap that addresses these gaps while leveraging existing investments where possible.</p>
 
       <p>By implementing a comprehensive data governance framework, organizations can transform data from a liability into a strategic asset that drives innovation, efficiency, and competitive advantage.</p>
-    `
-  }
+    `,
+  },
 ];
 
 // Get all unique tags
-export const allTags = [...new Set(blogPosts.flatMap(post => post.tags))].sort();
+export const allTags = [
+  ...new Set(blogPosts.flatMap((post) => post.tags)),
+].sort();
