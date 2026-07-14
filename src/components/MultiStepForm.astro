@@ -463,22 +463,25 @@ const PUBLIC_API_URL = import.meta.env.PUBLIC_API_URL ?? "";
 
       // Trigger consent modal
       if (typeof window.triggerConsentModal === "function") {
+        const uuid = crypto.randomUUID();
         console.log("Triggering consent modal:", {
-          contentId: "403214",
-          environment: "https://sandbox.gotrust.tech/universal",
+          contentId: "57684",
+          environment: "https://portal.gotrust.tech/universal",
           additionalInfo: {
-            "163": email,
-            "8": name,
+            "4775": email,
+            "4770": name,
+            "5765": uuid,
           },
         });
 
         window.triggerConsentModal(
           {
-            contentId: "403214",
-            environment: "https://sandbox.gotrust.tech/universal",
+            contentId: "57684",
+            environment: "https://portal.gotrust.tech/universal",
             additionalInfo: {
-              "163": email,
-              "8": name,
+              "4775": email,
+              "4770": name,
+              "5765": uuid,
             },
           },
           {
@@ -491,17 +494,22 @@ const PUBLIC_API_URL = import.meta.env.PUBLIC_API_URL ?? "";
             },
             onError: (error) => {
               console.error("Consent submission failed:", error);
+              submitButton.disabled = false;
+              submitButton.textContent = "Submit Request";
               alert("Failed to submit consent. Please try again.");
             },
             onClose: () => {
               console.log(
                 "User closed the consent modal without providing consent",
               );
+              submitButton.disabled = false;
+              submitButton.textContent = "Submit Request";
             },
           },
         );
       } else {
         console.error("Consent widget not loaded");
+        console.log("consent type", typeof window.triggerConsentModal);
         alert("Consent widget is not available. Please refresh the page.");
       }
     });

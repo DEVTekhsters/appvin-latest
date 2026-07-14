@@ -37,10 +37,12 @@ const {
   <head>
     <!-- Include the Cookie Banner Bundle from S3 -->
     <script
-      src="https://d1axzsitviir9s.cloudfront.net/gotrust-consent-shim.v1.0.0.min.js"
+      is:inline
+      src="https://cdn.gotrust.tech/gotrust-dev/gotrust-consent-shim.js"
       data-safe="true"></script>
     <script
-      src="https://d1axzsitviir9s.cloudfront.net/cookie-banner.bundle.js"
+      is:inline
+      src="https://cdn.gotrust.tech/gotrust-dev/cookie-banner.bundle.js"
       data-safe="true"></script>
 
     <link rel="icon" type="image/png" href="/images/appvin-icon.png" />
@@ -134,8 +136,12 @@ const {
     <!-- Consent Widget Script -->
     <script
       is:inline
-      src="https://gotrust-third-party-service.s3.ap-south-1.amazonaws.com/consent-widget.js"
-      {...({ "content-id": "403214", "environment": "https://sandbox.gotrust.tech/universal" } as any)}></script>
+      src="https://d1axzsitviir9s.cloudfront.net/consent-widget.js"
+      {...{
+        "content-id": "57684",
+        environment: "https://portal.gotrust.tech/universal",
+        "data-consent-widget": "true",
+      } as any}></script>
     <div class="overflow-x-hidden w-full no-scrollbar smooth-scroll">
       <slot />
     </div>
