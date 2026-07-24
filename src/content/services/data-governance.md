@@ -11,7 +11,7 @@ order: 3
 link: "https://appvintech.com/services/data-governance/"
 ---
 
-# Data Governance
+# Data Governance Solutions for Compliance
 
 ## Turn Data into a Competitive Edge
 

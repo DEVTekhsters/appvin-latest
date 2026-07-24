@@ -1,12 +1,12 @@
 ---
-title: "Expert SAP & Enterprise Integration Solutions  "
+title: "Expert SAP & Enterprise Integration Solutions"
 description: "Appvintech offers expert SAP and enterprise integration support. Improve real-time data flow, process automation, and enhanced system connectivity."
 icon: "/images/services/sap.webp"
 order: 1
 link: "https://appvintech.com/services/sap-integration/"
 ---
 
-# SAP HANA & Enterprise Integration
+# Expert SAP & Enterprise Integration Solutions
 
 Unlock the full potential of your enterprise with SAP HANA and advanced integration services. We empower organizations to make smarter, faster decisions by connecting data, automating workflows, and delivering actionable insights in real time.
 

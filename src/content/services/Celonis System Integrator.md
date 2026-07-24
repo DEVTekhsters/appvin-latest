@@ -11,7 +11,7 @@ order: 2
 link: "https://appvintech.com/services/celonis-system-integrator/"
 ---
 
-# Celonis System Integrator
+# Celonis System Integration Services
 
 ## Transform Your Business with Process Intelligence
 
