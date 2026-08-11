@@ -9,6 +9,7 @@ export const allCategories = [
   "UX Design",
   "Compliance",
   "Data Governance",
+  "Artificial Intelligence",
 ];
 
 export const blogPosts = [
