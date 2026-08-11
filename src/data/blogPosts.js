@@ -9,9 +9,370 @@ export const allCategories = [
   "UX Design",
   "Compliance",
   "Data Governance",
+  "Artificial Intelligence",
 ];
 
 export const blogPosts = [
+  {
+    title: "The Real Cost of a Failed AI Agent Pilot And How to Avoid It",
+    slug: "real-cost-of-a-failed-ai-agent-pilot",
+    excerpt:
+      "A failed AI agent pilot can cost enterprises far more than the initial proof-of-concept budget. Learn where AI pilot costs come from and how to build a production-ready AI strategy from day one.",
+    publishDate: "2026-07-10",
+    author: "Appvin Team",
+    image: "/images/blog/ai-agent-pilot/ai-agent-pilot-cost.png",
+    alt: "AI agent pilot development and production strategy",
+    tags: [
+      "AI Agents",
+      "Artificial Intelligence",
+      "AI Development",
+      "Digital Transformation",
+    ],
+    category: "Artificial Intelligence",
+    content: `<p>A failed AI agent pilot can cost an enterprise far more than the initial proof-of-concept budget. The biggest expenses often come from engineering time, cloud infrastructure, integration rework, governance delays, opportunity cost, and months spent on an AI initiative that never reaches production.</p>
+ 
+<p>The real problem is not that an AI pilot fails.</p>
+ 
+<p>The problem is when an organization spends months proving that an AI agent can work in a controlled environment without answering the more important question:</p>
+ 
+<p><strong>Can this AI agent work reliably, securely, and economically in production?</strong></p>
+ 
+<p>That gap is one of the main reasons enterprise AI initiatives become stuck in what is increasingly described as <strong>AI pilot purgatory</strong> promising proofs of concept that never become usable business systems.</p>
+ 
+<p>For companies investing in <strong>enterprise AI agents, generative AI, or custom AI development</strong>, the solution is not necessarily to run fewer pilots.</p>
+ 
+<p>It is to design every AI pilot with a clear path to production from day one.</p>
+ 
+<h2>What Is the Real Cost of a Failed AI Agent Pilot?</h2>
+ 
+<p>The budget approved for an AI proof of concept usually looks manageable.</p>
+ 
+<p>A small engineering team. Limited cloud infrastructure. A few model API calls. One or two integrations. A controlled group of users.</p>
+ 
+<p>It sounds like a low-risk experiment.</p>
+ 
+<p>But the initial pilot budget rarely represents the <strong>true cost of a failed AI project</strong>.</p>
+ 
+<p>As the initiative continues, additional expenses begin accumulating.</p>
+ 
+<p>Engineering teams spend months refining the system. Cloud resources keep running. Security and compliance teams become involved. Integrations are rebuilt. Business stakeholders attend review meetings. Production requirements appear that were never considered during the proof of concept.</p>
+ 
+<p>Eventually, the organization may have invested significant money and time into an AI agent that still cannot be deployed.</p>
+ 
+<p>That is where the true cost of an enterprise AI pilot begins to appear.</p>
+ 
+<h2>Where Failed AI Pilot Costs Actually Come From</h2>
+ 
+<p>The cost of a failed AI agent pilot is usually spread across multiple departments and budgets, which makes it difficult to see the total impact.</p>
+ 
+<h3>1. AI Infrastructure Costs Without Business Value</h3>
+ 
+<p>Enterprise AI development requires more than access to a large language model.</p>
+ 
+<p>Depending on the use case, an AI agent may require model APIs, cloud compute, vector databases, data storage, observability tools, evaluation platforms, security infrastructure, orchestration systems, development environments, and monitoring services.</p>
+ 
+<p>During a short proof of concept, these costs may remain relatively small.</p>
+ 
+<p>The problem begins when the pilot continues for months without a clear production decision.</p>
+ 
+<p>Infrastructure continues generating costs while the AI system generates little or no business return.</p>
+ 
+<p>Instead of validating an investment, the organization is effectively paying to keep an experiment alive.</p>
+ 
+<h3>2. AI Integration Work That Has to Be Rebuilt</h3>
+ 
+<p>Integration is one of the most underestimated costs of enterprise AI implementation.</p>
+ 
+<p>To launch an AI pilot quickly, development teams often work with sandbox environments, sample databases, static datasets, simplified APIs, test accounts, or mocked enterprise systems.</p>
+ 
+<p>These shortcuts make sense during early experimentation.</p>
+ 
+<p>But they can create major problems when the AI agent moves toward production.</p>
+ 
+<p>Production systems introduce real-world requirements such as authentication, authorization, API rate limits, access controls, error handling, logging, monitoring, data residency, security policies, privacy requirements, and unpredictable edge cases.</p>
+ 
+<p>Suddenly, what looked like a simple transition from pilot to production becomes another development project.</p>
+ 
+<p>The organization is no longer extending the original pilot.</p>
+ 
+<p>It is rebuilding large parts of it.</p>
+ 
+<p>That is why <strong>production-ready AI architecture</strong> should be considered before the proof of concept begins.</p>
+ 
+<h3>3. Engineering Opportunity Cost</h3>
+ 
+<p>Some of the biggest costs of failed AI projects never appear on the AI project's budget.</p>
+ 
+<p>Consider an engineering team that spends six or nine months developing an AI agent that never reaches production.</p>
+ 
+<p>The organization has not only paid for those engineers during that period.</p>
+ 
+<p>It has also lost the value of everything else those engineers could have built.</p>
+ 
+<p>They may have delayed customer features, automation projects, platform improvements, revenue-generating products, or operational initiatives.</p>
+ 
+<p>This is the <strong>opportunity cost of AI pilot failure</strong>.</p>
+ 
+<p>It is difficult to calculate precisely, but it should be part of any serious evaluation of enterprise AI ROI.</p>
+ 
+<h3>4. Security, Privacy, and AI Governance Rework</h3>
+ 
+<p>Another common problem appears when governance requirements are considered only after an AI pilot looks successful.</p>
+ 
+<p>Enterprise AI systems may need controls around data privacy, model risk, access management, auditability, human oversight, data retention, regulatory compliance, third-party models, security monitoring, and responsible AI governance.</p>
+ 
+<p>If these requirements were not considered during the initial architecture, production readiness can require substantial redesign.</p>
+ 
+<p>A technically impressive AI agent may suddenly become difficult to deploy because it cannot satisfy security, compliance, or governance requirements.</p>
+ 
+<p>Governance should therefore not be treated as the final approval stage of AI development.</p>
+ 
+<p>It should influence the design of the system from the beginning.</p>
+ 
+<h3>5. The Cost of AI Pilot Purgatory</h3>
+ 
+<p>One of the most expensive outcomes is not outright failure.</p>
+ 
+<p>It is indecision.</p>
+ 
+<p>An AI project may perform well enough that stakeholders do not want to cancel it, but not well enough to justify production deployment.</p>
+ 
+<p>The project then enters <strong>AI pilot purgatory</strong>.</p>
+ 
+<p>More testing is requested.</p>
+ 
+<p>The timeline is extended.</p>
+ 
+<p>Another model is evaluated.</p>
+ 
+<p>Another integration is added.</p>
+ 
+<p>Another security review is scheduled.</p>
+ 
+<p>Another executive presentation is prepared.</p>
+ 
+<p>Months pass without a clear decision.</p>
+ 
+<p>The organization continues spending money while receiving no production value.</p>
+ 
+<p>A good AI pilot should therefore have a predetermined point at which the organization decides whether to <strong>ship, redesign, or stop</strong>.</p>
+ 
+<h3>6. Loss of Executive Confidence in AI</h3>
+ 
+<p>Repeated failed AI pilots create another cost that is difficult to quantify.</p>
+ 
+<p>They change how people inside the organization perceive AI.</p>
+ 
+<p>After several proof-of-concept projects fail to reach production, executives naturally become more skeptical.</p>
+ 
+<p>Finance teams demand stronger justification.</p>
+ 
+<p>Engineering teams become less enthusiastic about another experimental project.</p>
+ 
+<p>Business teams become reluctant to participate.</p>
+ 
+<p>Executive sponsors may hesitate to champion new AI initiatives.</p>
+ 
+<p>Eventually, even a strong AI use case can struggle to receive funding because previous pilots damaged organizational confidence.</p>
+ 
+<p>One unsuccessful AI experiment affects one project.</p>
+ 
+<p>Several unsuccessful experiments can affect the organization's entire AI strategy.</p>
+ 
+<h2>Why Small AI Pilots Can Still Become Expensive</h2>
+ 
+<p>There is nothing inherently wrong with starting small.</p>
+ 
+<p>A limited AI pilot is often the right way to validate technical feasibility and business value.</p>
+ 
+<p>The problem appears when <strong>small pilot</strong> becomes synonymous with <strong>unrealistic environment</strong>.</p>
+ 
+<p>Many AI proofs of concept answer the question:</p>
+ 
+<p><strong>Can this technology work under ideal conditions?</strong></p>
+ 
+<p>Enterprises actually need to answer:</p>
+ 
+<p><strong>Can this AI system work inside our real business environment?</strong></p>
+ 
+<p>Those are very different questions.</p>
+ 
+<p>An AI assistant performing well against a curated dataset does not prove that it can operate reliably against live enterprise data.</p>
+ 
+<p>An AI agent completing 20 predefined tasks does not prove that it can safely process thousands of unpredictable production workflows.</p>
+ 
+<p>A successful demonstration does not prove that the system meets acceptable standards for accuracy, latency, security, scalability, governance, and operating cost.</p>
+ 
+<p>If an AI pilot does not test the factors that determine production viability, the organization may spend significant money proving something that was never the real business question.</p>
+ 
+<h2>What Is AI Pilot Purgatory?</h2>
+ 
+<p><strong>AI pilot purgatory is the stage where an AI proof of concept appears promising but cannot progress into production because critical questions about scalability, integration, security, governance, ownership, cost, or business value remain unresolved.</strong></p>
+ 
+<p>It is one of the clearest signs that an AI initiative was scoped as an experiment rather than as the first phase of a production system.</p>
+ 
+<p>Common warning signs include repeatedly extending the pilot timeline, unclear success metrics, no production owner, mocked integrations, unresolved security requirements, changing evaluation criteria, uncertain ROI, and no agreed go/no-go date.</p>
+ 
+<p>The longer these issues remain unresolved, the more expensive the AI initiative becomes.</p>
+ 
+<h2>How to Avoid a Failed AI Agent Pilot</h2>
+ 
+<p>Avoiding AI pilot failure does not require building the full production platform before testing the idea.</p>
+ 
+<p>It requires testing the assumptions that will determine whether production is possible.</p>
+ 
+<h3>1. Define Production Requirements Before Building the Pilot</h3>
+ 
+<p>Before AI development begins, determine what the real system will eventually need.</p>
+ 
+<p>That means understanding expected user volume, data sources, enterprise integrations, latency requirements, authentication, authorization, security controls, governance requirements, availability expectations, monitoring, infrastructure requirements, and acceptable operating costs.</p>
+ 
+<p>The objective is not to solve every production problem immediately.</p>
+ 
+<p>It is to ensure the pilot is testing something that resembles the environment the final AI agent will operate in.</p>
+ 
+<h3>2. Define AI Pilot Success Metrics Before Development</h3>
+ 
+<p>A pilot should never begin with a vague objective such as:</p>
+ 
+<p><em>"Let's see whether AI can improve this process."</em></p>
+ 
+<p>The team should define measurable criteria before development starts.</p>
+ 
+<p>For a customer service AI agent, success might be measured through resolution rate, response accuracy, escalation rate, response time, cost per resolved case, and customer satisfaction.</p>
+ 
+<p>For an internal enterprise AI agent, the organization might evaluate workflow completion rate, employee hours saved, error reduction, human intervention rate, and cost per automated task.</p>
+ 
+<p>Most importantly, stakeholders should agree on what results will lead to deployment, redesign, or cancellation.</p>
+ 
+<p>Without predefined AI success metrics, every result becomes open to interpretation.</p>
+ 
+<h3>3. Connect AI Agents to Real Systems Earlier</h3>
+ 
+<p>Mocked integrations are useful for early development.</p>
+ 
+<p>They should not become the foundation of the entire pilot.</p>
+ 
+<p>Where security and operational constraints allow, the AI agent should interact with real enterprise systems early in the process.</p>
+ 
+<p>Access can remain heavily restricted.</p>
+ 
+<p>The system might use read-only permissions, a small production dataset, limited workflows, controlled users, or a restricted environment.</p>
+ 
+<p>This exposes integration problems while they are still inexpensive to fix.</p>
+ 
+<p>Discovering a critical integration constraint in week three is far cheaper than discovering it after six months of AI development.</p>
+ 
+<h3>4. Address AI Governance From Day One</h3>
+ 
+<p>Security, privacy, compliance, and responsible AI requirements should be part of the initial architecture.</p>
+ 
+<p>For enterprise AI agents, this may include human oversight, audit trails, role-based access, data retention rules, prompt and output logging, sensitive-data controls, model evaluation, third-party AI risk management, and incident response procedures.</p>
+ 
+<p>Considering these requirements early helps prevent situations where a successful AI proof of concept needs to be redesigned before deployment.</p>
+ 
+<h3>5. Establish a Clear Go/No-Go Decision</h3>
+ 
+<p>Every enterprise AI pilot should have a clear decision point.</p>
+ 
+<p>When that milestone arrives, stakeholders should decide whether to deploy, improve, redesign, or stop the project.</p>
+ 
+<p>What should not happen is indefinite evaluation.</p>
+ 
+<p>A pilot that continuously moves beyond its original timeline without resolving its core hypothesis is no longer a controlled experiment.</p>
+ 
+<p>It is becoming AI pilot purgatory.</p>
+ 
+<h3>6. Measure AI Costs Against Business Outcomes</h3>
+ 
+<p>Enterprise AI ROI should be connected to the business problem the AI agent was created to solve.</p>
+ 
+<p>If an AI support agent is intended to reduce customer service workload, measure the cost per successfully resolved request.</p>
+ 
+<p>If an internal AI agent is intended to automate workflows, measure the cost per completed workflow alongside employee hours saved.</p>
+ 
+<p>If an AI sales assistant is intended to improve conversion, evaluate incremental revenue against development and operating costs.</p>
+ 
+<p>Metrics such as <em>"AI adoption"</em> or <em>"number of users testing the tool"</em> may be useful operational indicators, but they do not prove that an AI system creates economic value.</p>
+ 
+<h2>What Does a Production-First AI Pilot Look Like?</h2>
+ 
+<p>A <strong>production-first AI development approach</strong> does not mean building the entire enterprise system before validating the idea.</p>
+ 
+<p>It means designing the proof of concept so that successful work can move forward instead of being discarded.</p>
+ 
+<p>A production-first AI pilot should answer four questions.</p>
+ 
+<p><strong>Can the AI agent perform the required task accurately enough?</strong></p>
+ 
+<p><strong>Can it integrate with the organization's real technology environment?</strong></p>
+ 
+<p><strong>Can it satisfy security, privacy, governance, and compliance requirements?</strong></p>
+ 
+<p><strong>Can it create enough measurable business value to justify its production cost?</strong></p>
+ 
+<p>If the pilot cannot answer these questions, the organization may simply be testing whether AI can produce an impressive demonstration.</p>
+ 
+<p>That is not the same as determining whether an AI system should become part of the business.</p>
+ 
+<h2>AI Pilot vs. Production AI: The Real Decision</h2>
+ 
+<p>The choice is not between experimentation and production.</p>
+ 
+<p>Enterprises still need AI pilots.</p>
+ 
+<p>The important distinction is between an <strong>AI pilot designed to demonstrate technology</strong> and an <strong>AI pilot designed to make a production decision</strong>.</p>
+ 
+<p>Organizations that successfully scale enterprise AI treat the pilot as the first stage of a larger production journey.</p>
+ 
+<p>Integration, architecture, AI governance, security, evaluation, infrastructure, operating costs, and business outcomes are considered early rather than after the proof of concept has already been built.</p>
+ 
+<p>That approach requires more discipline at the beginning.</p>
+ 
+<p>But it can eliminate months of engineering rework, reduce wasted AI investment, and significantly improve the chances that a promising AI agent actually reaches production.</p>
+ 
+<h2>Frequently Asked Questions</h2>
+ 
+<h3>How much does a failed AI pilot cost?</h3>
+ 
+<p>The cost of a failed AI pilot varies significantly based on the size and complexity of the project. Enterprise initiatives can accumulate substantial costs through engineering time, cloud infrastructure, AI model usage, integration work, security reviews, governance activities, opportunity cost, and development that must later be rebuilt for production.</p>
+ 
+<h3>Why do enterprise AI pilots fail?</h3>
+ 
+<p>Enterprise AI pilots often fail because they prove technical feasibility without validating production requirements. Integration complexity, poor data quality, unclear business value, inadequate governance, security requirements, scalability issues, uncertain operating costs, and poorly defined success metrics can prevent promising pilots from reaching production.</p>
+ 
+<h3>What is AI pilot purgatory?</h3>
+ 
+<p>AI pilot purgatory occurs when an AI proof of concept remains stuck between experimentation and production. The project may continue through technical reviews, governance assessments, budget discussions, and additional testing without a clear decision to deploy, redesign, or stop.</p>
+ 
+<h3>How can companies avoid failed AI agent pilots?</h3>
+ 
+<p>Organizations can reduce AI pilot failure by defining production requirements before development, establishing measurable success criteria, integrating with real enterprise systems early, considering security and AI governance from the beginning, tracking costs against business outcomes, and establishing a clear go/no-go milestone.</p>
+ 
+<h3>Should an AI pilot be production-ready?</h3>
+ 
+<p>An AI pilot does not need every feature required by the final production system. However, it should test the major assumptions that determine production viability, including integrations, scalability, security, governance, reliability, operating cost, and measurable business value.</p>
+ 
+<h3>What should companies evaluate before building an AI agent?</h3>
+ 
+<p>Before developing an enterprise AI agent, businesses should evaluate the business problem, expected ROI, available data, enterprise integrations, model requirements, security controls, AI governance, privacy requirements, human oversight, scalability, infrastructure costs, and measurable deployment criteria.</p>
+ 
+<h3>How long should an enterprise AI pilot run?</h3>
+ 
+<p>There is no universal timeline for an AI pilot. The appropriate duration depends on the complexity of the use case and the hypothesis being tested. What matters is that the pilot has a defined evaluation period and a predetermined decision point rather than remaining open-ended.</p>
+ 
+<h3>What is the difference between an AI proof of concept and a production AI system?</h3>
+ 
+<p>An AI proof of concept primarily demonstrates whether an idea is technically feasible. A production AI system must also meet requirements for scalability, reliability, security, governance, monitoring, integrations, cost efficiency, and real-world business performance.</p>
+ 
+<h2>Build Your Next AI Agent for Production</h2>
+ 
+<p>The expensive part of enterprise AI is not experimentation.</p>
+ 
+<p>It is repeatedly building promising AI pilots that have no clear path to deployment.</p>
+ 
+<p><strong>Build your next AI initiative with a clear path from proof of concept to production not another pilot that quietly stalls.</strong></p>`,
+  },
   {
     title:
       "Most AI Agent Projects Will Fail in the Next 12 Months. Here's the One Question That Predicts Which Ones Won't.",
@@ -20,8 +381,7 @@ export const blogPosts = [
       "Develop a comprehensive digital transformation strategy that aligns technology initiatives with business objectives for sustainable growth.",
     publishDate: "2026-07-10",
     author: "Appvin Team",
-    image:
-      "/images/blog/innovation/most-ai-agents-wont-work.png",
+    image: "/images/blog/innovation/most-ai-agents-wont-work.png",
     alt: "Digital transformation strategy illustration",
     tags: ["Digital Transformation", "Strategy", "Innovation"],
     category: "Digital Transformation",
@@ -81,7 +441,7 @@ export const blogPosts = [
     excerpt:
       "Develop a comprehensive digital transformation strategy that aligns technology initiatives with business objectives for sustainable growth.",
     publishDate: "2023-05-25",
-    author: "Emily Rodriguez",
+    author: "Appvin Team",
     image:
       "/images/blog/digital-transformation/digital-transformation-strategy.jpg",
     alt: "Digital transformation strategy illustration",
@@ -149,7 +509,7 @@ export const blogPosts = [
     excerpt:
       "Learn how to build an organizational culture that consistently generates innovative ideas and turns them into market-leading solutions.",
     publishDate: "2023-05-22",
-    author: "Thomas Wright",
+    author: "Appvin Team",
     image: "/images/blog/innovation/innovation-strategy.jpg",
     alt: "Innovation strategy illustration",
     tags: ["Innovation", "Leadership", "Organizational Culture"],
@@ -253,7 +613,7 @@ export const blogPosts = [
     excerpt:
       "Discover how artificial intelligence can streamline operations, reduce costs, and improve efficiency through intelligent automation.",
     publishDate: "2023-05-18",
-    author: "Michael Chen",
+    author: "Appvin Team",
     image: "/images/blog/ai/ai-automation.jpg",
     alt: "AI automation illustration",
     tags: ["AI", "Automation", "Digital Transformation"],
@@ -317,7 +677,7 @@ export const blogPosts = [
     excerpt:
       "Explore the advantages of microservices architecture for modern applications and strategies to overcome common implementation hurdles.",
     publishDate: "2023-05-10",
-    author: "David Rodriguez",
+    author: "Appvin Team",
     image: "/images/blog/architecture/microservices.jpg",
     alt: "Microservices architecture illustration",
     tags: ["Architecture", "Microservices", "Cloud"],
@@ -388,7 +748,7 @@ export const blogPosts = [
     excerpt:
       "Learn the best practices for designing and implementing cloud solutions that can grow with your business needs.",
     publishDate: "2023-03-28",
-    author: "Maria Garcia",
+    author: "Appvin Team",
     image: "/images/blog/cloud-computing/cloud-migration.jpg",
     tags: ["Cloud", "Scalability", "Architecture"],
     category: "Cloud Computing",
@@ -422,7 +782,7 @@ export const blogPosts = [
     excerpt:
       "Explore how artificial intelligence is transforming the product engineering landscape, driving innovation, sustainability, and responsible development.",
     publishDate: "2023-04-15",
-    author: "Alex Johnson",
+    author: "Appvin Team",
     image:
       "/images/blog/product-engineering/product-engineering-best-practices.jpg",
     tags: ["AI", "Product Engineering", "Innovation"],
@@ -468,7 +828,7 @@ export const blogPosts = [
     excerpt:
       "Discover how user experience design plays a crucial role in successful digital transformation initiatives.",
     publishDate: "2023-03-10",
-    author: "James Wilson",
+    author: "Appvin Team",
     image: "/images/blog/ux/ux-design-1.jpg",
     tags: ["UX Design", "Digital Transformation", "User Experience"],
     category: "UX Design",
@@ -504,7 +864,7 @@ export const blogPosts = [
     excerpt:
       "Navigate the complex landscape of regulatory compliance with strategies for maintaining adherence while driving innovation.",
     publishDate: "2023-04-05",
-    author: "Jennifer Martinez",
+    author: "Appvin Team",
     image: "/images/blog/compliance/regulatory-compliance.jpg",
     tags: ["Compliance", "Security", "Risk Management"],
     category: "Compliance",
@@ -577,7 +937,7 @@ export const blogPosts = [
     excerpt:
       "Elevate your data governance strategy from a compliance necessity to a strategic business asset that drives value and innovation.",
     publishDate: "2023-04-20",
-    author: "Robert Chang",
+    author: "Appvin Team",
     image: "/images/blog/data/data-governance-advanced.jpg",
     tags: ["Data Governance", "Data Strategy", "Analytics"],
     category: "Data Governance",
@@ -647,7 +1007,7 @@ export const blogPosts = [
     excerpt:
       "Compare horizontal and vertical scaling strategies to determine the optimal approach for your application's performance, cost, and reliability needs.",
     publishDate: "2023-03-15",
-    author: "Jason Kim",
+    author: "Appvin Team",
     image: "/images/blog/scalability/horizontal-scaling.jpg",
     tags: ["Scalability", "Architecture", "Cloud"],
     content: `
@@ -758,7 +1118,7 @@ export const blogPosts = [
     excerpt:
       "Protect your organization from evolving cyber threats with comprehensive security strategies that balance protection with business enablement.",
     publishDate: "2023-03-05",
-    author: "Sophia Williams",
+    author: "Appvin Team",
     image: "/images/blog/security/cybersecurity-best-practices.jpg",
     tags: ["Security", "Cybersecurity", "Risk Management"],
     content: `
@@ -881,7 +1241,7 @@ export const blogPosts = [
     excerpt:
       "Master the fundamental principles of user experience design to create intuitive, engaging, and effective digital products.",
     publishDate: "2023-02-28",
-    author: "Rachel Torres",
+    author: "Appvin Team",
     image: "/images/blog/user-experience/user-centered-design.jpg",
     tags: ["UX Design", "User Experience", "Design Thinking"],
     content: `
@@ -1016,7 +1376,7 @@ export const blogPosts = [
     excerpt:
       "Learn how to establish robust data governance frameworks that ensure data quality, security, and compliance.",
     publishDate: "2023-02-22",
-    author: "Sarah Chen",
+    author: "Appvin Team",
     image: "/images/blog/data/data-analytics-1.jpg",
     tags: ["Data Governance", "Compliance", "Security"],
     content: `
