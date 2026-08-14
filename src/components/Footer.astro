@@ -667,11 +667,10 @@ const socialLinks = [
               </a>
             </li>
             <li>
-              <a
-                href="https://sandbox.gotrust.tech/dsr/request-form/U2FsdGVkX1Por21Lddt9pwPor21LdKXbx5bRxavS7YXgb4ESvHoN28Y_/U2FsdGVkX1Por21LdpyS4JLLzrntpvvRsXaXNm7BOopRyim50_"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group"
+              <button
+                type="button"
+                id="dsr-form-trigger"
+                class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group text-left"
               >
                 <span
                   class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"
@@ -680,7 +679,7 @@ const socialLinks = [
                   class="group-hover:translate-x-1 transition-transform duration-300"
                   >DSR Form</span
                 >
-              </a>
+              </button>
             </li>
           </ul>
         </div>
@@ -1198,6 +1197,37 @@ const socialLinks = [
               submitBtn.innerHTML = originalBtnHTML;
             }
           }
+        });
+      }
+
+      const dsrFormTrigger = document.getElementById("dsr-form-trigger");
+
+      if (dsrFormTrigger) {
+        dsrFormTrigger.addEventListener("click", () => {
+          const existingScript = document.querySelector(
+            'script[data-dsr-widget="true"]',
+          );
+
+          if (existingScript) {
+            existingScript.remove();
+          }
+
+          const dsrScript = document.createElement("script");
+          dsrScript.src = "https://dev.gotrust.tech/dsr-widget.js";
+          dsrScript.setAttribute(
+            "collectionId",
+            "U2FsdGVkX18URE7-zQazZ0M-4ShXRYgpRRrW7CX4IHA_",
+          );
+          dsrScript.setAttribute(
+            "businessUnitId",
+            "U2FsdGVkX1-FFxFnPqo9plTxfRt5aR-K1GPor21Lddy-0lbJk_",
+          );
+          dsrScript.setAttribute(
+            "environment",
+            "https://dev.gotrust.tech/backend",
+          );
+          dsrScript.setAttribute("data-dsr-widget", "true");
+          document.body.appendChild(dsrScript);
         });
       }
 
