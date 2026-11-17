@@ -39,11 +39,13 @@ const {
     <script
       is:inline
       src="https://cdn.gotrust.tech/gotrust-dev/gotrust-consent-shim.js"
-      data-safe="true"></script>
+      data-safe="true"
+    ></script>
     <script
       is:inline
       src="https://cdn.gotrust.tech/gotrust-dev/cookie-banner.bundle.js"
-      data-safe="true"></script>
+      data-safe="true"
+    ></script>
 
     <link rel="icon" type="image/png" href="/images/appvin-icon.png" />
     <SEO
@@ -60,7 +62,9 @@ const {
       twitterImage={twitterImage}
     />
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WZX9S8DXH7"
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-WZX9S8DXH7"
     ></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
@@ -121,7 +125,9 @@ const {
       });
     </script>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-66Q06BECSK"
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-66Q06BECSK"
     ></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
@@ -136,12 +142,13 @@ const {
     <!-- Consent Widget Script -->
     <script
       is:inline
-      src="https://d1axzsitviir9s.cloudfront.net/consent-widget.js"
-      {...{
-        "content-id": "57684",
+      src="https://cdn.gotrust.tech/gotrust-portal/consent-widget.js"
+      {...({
+        "content-id": "777156",
         environment: "https://portal.gotrust.tech/universal",
         "data-consent-widget": "true",
-      } as any}></script>
+      } as any)}
+    ></script>
     <div class="overflow-x-hidden w-full no-scrollbar smooth-scroll">
       <slot />
     </div>
